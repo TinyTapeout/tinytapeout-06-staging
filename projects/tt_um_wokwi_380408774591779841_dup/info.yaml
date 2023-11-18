@@ -1,0 +1,62 @@
+documentation:
+  author: Mooneer Salem
+  bidirectional:
+  - PCM sawtooth wave output (bit 9)
+  - PCM sawtooth wave output (bit 10)
+  - PCM sawtooth wave output (bit 11)
+  - PCM sawtooth wave output (bit 12)
+  - PCM sawtooth wave output (bit 13)
+  - PCM sawtooth wave output (bit 14)
+  - PCM sawtooth wave output (bit 15)
+  - PDM sawtooth wave output (needs LPF)
+  clock_hz: 50000000
+  description: Generates sawtooth waves for use as audio.
+  discord: themindiswatching
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'This project increments a counter from 0 to 25,000,000 and back to
+    zero again. The current value
+
+    of this counter is then passed into a PDM modulator to generate the output. Filtering
+    it with a low
+
+    pass filter (designed for use in the audio range, recommended cutoff ~30 KHz)
+    and then amplifying the
+
+    result will result in usable audio.
+
+    '
+  how_to_test: "Add a suitable RC low pass filter to output pin 7. This can be probed\
+    \ by an oscillocope as-is. To listen to the audio, \nthe output of the RC filter\
+    \ should be attached to a suitable audio amplifier.\n"
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - Frequency left shift amount (in bits) -- bit 0
+  - Frequency left shift amount (in bits) -- bit 1
+  - Frequency left shift amount (in bits) -- bit 2
+  - Frequency left shift amount (in bits) -- bit 3
+  language: Verilog
+  outputs:
+  - PCM sawtooth wave output (bit 9)
+  - PCM sawtooth wave output (bit 10)
+  - PCM sawtooth wave output (bit 11)
+  - PCM sawtooth wave output (bit 12)
+  - PCM sawtooth wave output (bit 13)
+  - PCM sawtooth wave output (bit 14)
+  - PCM sawtooth wave output (bit 15)
+  - PDM sawtooth wave output (needs LPF)
+  picture: ''
+  tag: experiment, pwm, sound
+  title: Sawtooth Generator
+project:
+  source_files:
+  - tt_um_wokwi_380408774591779841.v
+  - triangle.v
+  - pdm.v
+  tiles: 1x1
+  top_module: tt_um_wokwi_380408774591779841_dup
+  wokwi_id: 0
+yaml_version: 4

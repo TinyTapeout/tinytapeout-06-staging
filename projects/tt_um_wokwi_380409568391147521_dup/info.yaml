@@ -1,0 +1,53 @@
+documentation:
+  author: Jeremy Hong
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Simple hardware trojan circuit described by Ryan Cornateanu in a medium
+    article
+  discord: Hongseleco
+  doc_link: README.md
+  external_hw: No external hardware required, just TinyTapeout Carrier Board
+  how_it_works: 'Based off of medium article by Ryan Cornateanu: "Hardware Trojans
+    IUnder a Microscope https://ryancor.medium.com/hardware-trojans-under-a-microscope-bf542acbcc29
+
+    '
+  how_to_test: 'Use DIP switches as input, 1- 4 is for normal circuit that would be
+    considered "secure", and 5 - 8 for compromised circuit with embedded Hardware
+    Trojan
+
+    '
+  inputs:
+  - r0_normal
+  - r1_normal
+  - r2_normal
+  - r3_normal
+  - r0_trojan
+  - r1_trojan
+  - r2_trojan
+  - r3_trojan
+  language: Wokwi
+  outputs:
+  - Output from r0_normal - r3_normal circuit
+  - segment b not used
+  - segment c not used
+  - segment d not used
+  - segment e not used
+  - segment f not used
+  - Output from r0_trojan - r3_trojan circuit
+  - dot not used
+  picture: ''
+  tag: 'test, hardwaresecurity, hardwaretrojan, '
+  title: Hardware Trojan Example
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380409568391147521_dup
+  wokwi_id: 0
+yaml_version: 4

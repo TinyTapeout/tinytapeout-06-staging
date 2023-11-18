@@ -1,0 +1,103 @@
+documentation:
+  author: Wallace Everest
+  bidirectional:
+  - None
+  - None
+  - None
+  - None
+  - None
+  - None
+  - None
+  - None
+  clock_hz: 1789773
+  description: Vintage 8-bit sound generator
+  discord: morningjava
+  doc_link: https://github.com/WallieEverest/tt05/blob/main/README.md
+  external_hw: Computer COM port
+  how_it_works: 'ChipTune implements an 8-bit Programmable Sound Generator (PSG).
+
+    Input is from a serial UART interface.
+
+    Output is PWM audio.
+
+
+    # Overview
+
+    This project replicates the Audio Processing Unit (APU) of vintage video games.
+
+
+    # Statistics
+
+    - Tiles: 1x2
+
+    - DFF: 458
+
+    - Total Cells: 2760
+
+    - Utilization: 72%
+
+
+    # TinyTapeout 5 Configuration
+
+    TT04 devices from the eFabless Multi-Project Wafer (MPW) shuttle are delivered
+    in QFN-64 packages, mounted on a daughterboard for breakout.
+
+
+    Based on data from:
+
+    - https://github.com/WallieEverest/tt04
+
+
+    Changes:
+
+    1.) Static registers addressed by the serial UART have been connected to the external
+    reset, providing a known startup.
+
+    2.) Default values for REG signals have been removed, allowing ''X'' propagation
+    during simulation until the design reaches steady state.
+
+    '
+  how_to_test: 'The ChipTune project can be interfaced to a computer COM port (9600,n,8,1).
+
+    An analog PWM filter and audio driver are needed for the test rig.
+
+    '
+  inputs:
+  - None
+  - None
+  - RX
+  - None
+  - None
+  - None
+  - None
+  - None
+  language: Verilog
+  outputs:
+  - Blink
+  - Link
+  - TX
+  - PWM
+  - Square1
+  - Square2
+  - Triangle
+  - Noise
+  picture: ./image/tt05.png
+  tag: music
+  title: ChipTune
+project:
+  source_files:
+  - audio_pwm.v
+  - euro.v
+  - frame.v
+  - noise.v
+  - registers.v
+  - square.v
+  - system.v
+  - triangle.v
+  - uart.v
+  - apu.v
+  - tt_um_morningjava_top.v
+  tiles: 1x2
+  top_module: tt_um_morningjava_top_dup
+  wokwi_id: 0
+yaml_version: 4

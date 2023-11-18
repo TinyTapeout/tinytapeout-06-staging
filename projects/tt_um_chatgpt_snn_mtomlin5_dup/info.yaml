@@ -1,0 +1,64 @@
+documentation:
+  author: Michael Tomlinson, Joe Lie, ChatGPT-4, Andreas Andreou - mtomlin5@jh.edu
+  bidirectional:
+  - GPIO pins are wired to outputs and driven high (unused by the design).
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  clock_hz: 50000000
+  description: SPI Programmable spiking neural network with 6 LIF neurons ( 3 input
+    - 3 output ) with fully programmable weights (8-bit)
+  discord: ''
+  doc_link: ''
+  external_hw: fpga
+  how_it_works: "This project implements 6 programmable digital LIF neurons. The neurons\
+    \ are arranged in 2 layers (3 in each). Spikes_in directly maps to the inputs\
+    \ of the first layer neurons. When an input spike is received, it is first multiplied\
+    \ by an 8 bit weight, programmable from the spi interface, 1 per input neuron.\
+    \ This 8 bit value is then added to the membrane potential of the respective neuron.\
+    \ \n\nWhen the first layer neurons activate, its pulse is routed to each of the\
+    \ 3 neurons in the next layer. There are 9 programmable weights describing the\
+    \ connectivity between the first and second layers. Output spikes from the 2nd\
+    \ layer drive spikes_out. \n"
+  how_to_test: "After reset, program the neuron threshold, leak rate, and refractory\
+    \ period. Additionally program the first and 2nd layer weights (all programming\
+    \ is done over spi). Once programmed activate spikes_in to represent input data,\
+    \ track spikes_out synchronously (1 clock cycle pulses). \n"
+  inputs:
+  - ui_in[7] - unused
+  - ui_in[6] - unused
+  - ui_in[5] - spikes_in[2]
+  - ui_in[4] - spikes_in[1]
+  - ui_in[3] - spikes_in[0]
+  - ui_in[2] - copi
+  - ui_in[1] - cs_n
+  - ui_in[0] - sclk
+  language: Verilog
+  outputs:
+  - uo_out[7] - unused
+  - uo_out[6] - unused
+  - uo_out[5] - unused
+  - uo_out[4] - unused
+  - uo_out[3] - cipo
+  - uo_out[2] - spikes_out[2]
+  - uo_out[1] - spikes_out[1]
+  - uo_out[0] - spikes_out[0]
+  picture: ''
+  tag: chatgpt, SNNs, spi
+  title: ChatGPT designed Spiking Neural Network
+project:
+  source_files:
+  - tt_um_chatgpt_snn_mtomlin5.v
+  - decoder.v
+  - chat_gpt_spi_slave_v2.v
+  - chatgpt_lif_neuron_v2.v
+  - chatgpt_neuron_network_v2.v
+  - chatgpt_top_v2.v
+  tiles: 2x2
+  top_module: tt_um_chatgpt_snn_mtomlin5_dup
+  wokwi_id: 0
+yaml_version: 4

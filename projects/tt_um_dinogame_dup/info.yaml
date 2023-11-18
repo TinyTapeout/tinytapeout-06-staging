@@ -1,0 +1,59 @@
+documentation:
+  author: Anish Singhani
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: An endless-runner game implemented on a VGA monitor
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Connect to VGA and some buttons and play!
+
+    '
+  how_to_test: 'Connect to a VGA monitor
+
+    '
+  inputs:
+  - jump btn
+  - halt btn
+  - debug btn
+  - mode btn
+  - none
+  - none
+  - none
+  - none
+  language: SystemVerilog
+  outputs:
+  - VGA R0
+  - VGA G0
+  - VGA B0
+  - VGA vsync
+  - VGA R1
+  - VGA G1
+  - VGA B1
+  - VGA hsync
+  picture: ''
+  tag: ''
+  title: VGA Dino Game
+project:
+  source_files:
+  - dinogame.v
+  - dinosprite.v
+  - jumping.v
+  - rendering.v
+  - rng.v
+  - score.v
+  - scroll.v
+  - vga.v
+  - tt_um_dinogame.sv
+  tiles: 2x2
+  top_module: tt_um_dinogame_dup
+  wokwi_id: 0
+yaml_version: 4

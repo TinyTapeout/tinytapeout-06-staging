@@ -1,0 +1,63 @@
+documentation:
+  author: Mathias Eriksen
+  bidirectional:
+  - FETCH Ready flag (out)
+  - Sending out flag  (out)
+  - Done sending flag (in)
+  - Sending CPU flag (in)
+  - Column Value bit 0
+  - Column Value bit 1
+  - Row Value bit 0
+  - Row Value bit 1
+  clock_hz: 10000000
+  description: This project takes in a 3x3 weight matrix in Compressed Sparse Row
+    format, value is quantized and 8 bits long. It also takes in the corresponding
+    3 bit spike train. It then computes the matrix vector multiplication product and
+    outputs the resulting vector on the output line
+  discord: Mati_
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Uses a set of registers and flags from the CPU to fetch the weight\
+    \ matrix in CSR format \nas well as the spike train. The values are passed in\
+    \ one at a time, and the entire matrix\nis loaded into registers that are internal\
+    \ to the IC\n\nOnce the full sparse matrix and spike train are loaded in, an algorithm\
+    \ is used to compute\nthe resultant vector of the matrix vector multiplication\
+    \ of the weight matrix and the spike train\n\nFinally, the output vector is transmitted\
+    \ on the output line, along with a flag bit which flips\neach time a new value\
+    \ is sent out.\n"
+  how_to_test: "After reset, send values in CSR format using the input bits described\
+    \ below. Send a value by toggling\nthe sending CPU flag for one clock cycle while\
+    \ the values are in their respective registers. Repeat\nfor the entire matrix,\
+    \ toggling the sending CPU flag low between each value. Then, check the return\n\
+    values by waiting for the sending out flag from the IC to flip. After the first\
+    \ flip, the other\ntwo values will be sent on each clock edge. \n"
+  inputs:
+  - Input Value bit 0
+  - Input Value bit 1
+  - Input Value bit 2
+  - Input Value bit 3
+  - Input Value bit 4
+  - Input Value bit 5
+  - Input Value bit 6
+  - Input Value bit 7
+  language: Verilog
+  outputs:
+  - Output Value bit 0
+  - Output Value bit 1
+  - Output Value bit 2
+  - Output Value bit 3
+  - Output Value bit 4
+  - Output Value bit 5
+  - Output Value bit 6
+  - Output Value bit 7
+  picture: ''
+  tag: timer, test
+  title: Matrix Vector Multiplication Accelerator
+project:
+  source_files:
+  - tt_um_mvm_.v
+  - mvm.v
+  tiles: 1x1
+  top_module: tt_um_mvm__dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,51 @@
+documentation:
+  author: Eric Smith
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: Count up to 10, one second at a time.
+  discord: Eric Smith
+  doc_link: ''
+  external_hw: programmable delay lines on inputs
+  how_it_works: 'Need to write this
+
+    '
+  how_to_test: 'Need to write this
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: test
+  title: tt05-loopback tile with input skew measurement
+project:
+  source_files:
+  - tt_um_loopback_ericsmi.v
+  tiles: 1x1
+  top_module: tt_um_loopback_ericsmi_dup
+  wokwi_id: 0
+yaml_version: 4

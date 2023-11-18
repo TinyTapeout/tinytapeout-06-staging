@@ -1,0 +1,38 @@
+documentation:
+  author: Gyanepsaa Singh
+  bidirectional:
+  - 2-bit attack
+  - 2-bit decay
+  - 2-bit sustain
+  - 2-bit release
+  clock_hz: 0
+  description: Sound synthesizer
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Basic sound synthesizer module: generates sound signal, modulates
+    it with an ASDR envelope, and outputs it.
+
+    '
+  inputs:
+  - select triangle or sawtooth waveform
+  - null
+  - sampling frequency clock
+  - hold a note
+  - 4 frequency selection bits
+  language: Verilog
+  outputs:
+  - sound output
+  picture: ''
+  tag: ''
+  title: Synth
+project:
+  source_files:
+  - synth.sv
+  tiles: 1x1
+  top_module: tt_um_synth_GyanepsaaS_dup
+  wokwi_id: 0
+yaml_version: 4

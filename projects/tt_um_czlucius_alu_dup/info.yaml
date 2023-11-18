@@ -1,0 +1,91 @@
+documentation:
+  author: Lucius Chee
+  bidirectional:
+  - instruction select bit 0
+  - instruction select bit 1
+  - instruction select bit 2
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: A simple 4-bit, 13 instruction, arithmetic logic unit.
+  discord: lcz5
+  doc_link: ''
+  external_hw: digital logic (e.g. buttons/sensors)
+  how_it_works: 'The input 8 bits are split into the upper 4 bits (value y), and lower
+    4 bits (value x).
+
+    Depending on the instruction given after the select pin, operations will be performed
+    on the values to give an 8 bit output.
+
+    The select pins use the bi-directional I/O.
+
+
+    |Select (bidi 3 - 0)|Operation|
+
+    |0|+|
+
+    |1|-|
+
+    |2|*|
+
+    |3|/|
+
+    |4|bitwise AND|
+
+    |5|bitwise OR|
+
+    |6|bitwise XOR|
+
+    |7|bitwise NAND|
+
+    |8|bitwise NOR|
+
+    |9|~ (negation of 8 bits)|
+
+    |10|% (modulo)|
+
+    |11|<< (left shift)|
+
+    |12|>> (right shift)|
+
+    |other|input bits as is|
+
+    '
+  how_to_test: 'After reset, the counter should increase by one every second with
+    a 10MHz input clock.
+
+    Experiment by changing the inputs to change the counting speed.
+
+    '
+  inputs:
+  - x3
+  - x2
+  - x1
+  - x0
+  - y3
+  - y2
+  - y1
+  - y0
+  language: Verilog
+  outputs:
+  - output 7
+  - output 6
+  - output 5
+  - output 4
+  - output 3
+  - output 2
+  - output 1
+  - output 0
+  picture: ''
+  tag: alu
+  title: 4 Bit ALU
+project:
+  source_files:
+  - alu.v
+  tiles: 1x1
+  top_module: tt_um_czlucius_alu_dup
+  wokwi_id: 0
+yaml_version: 4

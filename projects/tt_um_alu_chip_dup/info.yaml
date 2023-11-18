@@ -1,0 +1,35 @@
+documentation:
+  author: Devan Grover & Siddharth Kunisetty
+  bidirectional:
+  - alu_out [7:4] (OUT) - Output BCD value of operation
+  - alu_op_in [3:0] (IN) - Input operation for the ALU (ADD, SUBTRACT, AND, OR, EQUALS,
+    NOT, GT, LT)
+  clock_hz: 0
+  description: ALU Chip that outputs 7 Segment
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'This is a simple, 4 bit ALU that outputs its result on a 7 Segment
+    Display.
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - alu_in_1 [7:4] - First input into the ALU
+  - alu_in_2 [3:0] - Second input into the ALU
+  language: Verilog
+  outputs:
+  - 7 Segment Out [6:0] - Output to the 7 Segment display
+  - None [7] - NC
+  picture: ''
+  tag: ''
+  title: ALU Chip
+project:
+  source_files:
+  - alu.sv
+  tiles: 1x1
+  top_module: tt_um_alu_chip_dup
+  wokwi_id: 0
+yaml_version: 4

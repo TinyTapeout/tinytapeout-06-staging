@@ -1,0 +1,58 @@
+documentation:
+  author: rej
+  bidirectional:
+  - (in) EXEC
+  - (in) SYNC
+  - (in) SETUP_CONTROL 0 bit
+  - (in) SETUP_CONTROL 1 bit
+  - (in) SETUP_CONTROL 2 bit
+  - none
+  - none
+  - none
+  clock_hz: 10000000
+  description: 3 layer Spiking Neural Net with on-chip weights
+  discord: rzioma
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "3 layer Spiking Neural Net with on-chip weights \n"
+  how_to_test: 'After reset...
+
+    '
+  inputs:
+  - input bus LSB
+  - input bus
+  - input bus
+  - input bus
+  - input bus
+  - input bus
+  - input bus
+  - input bus MSB
+  language: Verilog
+  outputs:
+  - last layer neuron 0
+  - last layer neuron 1
+  - last layer neuron 2
+  - last layer neuron 3
+  - last layer neuron 4
+  - last layer neuron 5
+  - last layer neuron 6
+  - last layer neuron 7
+  picture: ''
+  tag: neural net
+  title: Chonky SNN
+project:
+  source_files:
+  - adder_tree.v
+  - multiplier_accumulator.v
+  - signed_clamped_adder.v
+  - batch_normalization.v
+  - pwm.v
+  - membrane.v
+  - neuron_lif.v
+  - neuron_pwm.v
+  - signal_edge.v
+  - tt_um_rejunity_snn.v
+  tiles: 4x2
+  top_module: tt_um_rejunity_snn_dup
+  wokwi_id: 0
+yaml_version: 4

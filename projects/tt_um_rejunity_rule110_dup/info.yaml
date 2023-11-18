@@ -1,0 +1,131 @@
+documentation:
+  author: ReJ aka Renaldas Zioma
+  bidirectional:
+  - /WE, inverted write enable
+  - /HALT, inverted halt automata
+  - ADDR#, cell block address bit 0
+  - ADDR#, cell block address bit 1
+  - ADDR#, cell block address bit 2
+  - ADDR#, cell block address bit 3
+  - ADDR#, cell block address bit 4
+  - none
+  clock_hz: 0
+  description: Cellular automaton based on the Rule 110
+  discord: rzioma
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "This design executes **over 200 cells** of an elementary cellular\
+    \ automaton **every cycle** applying [Rule 110](https://en.wikipedia.org/wiki/Rule_110)\
+    \ to all of them **in parallel**.\nRoughly 115 cells with parallel read/write\
+    \ bus can be placed on 1x1 TinyTapeout tile. Without read/write bus, up to 240\
+    \ cells fit on a 1x1 tile!\n\n# Interesting facts about Rule 110\n\nRule 110 exhibits\
+    \ complex behavior on the boundary **between stability and chaos**. It could be\
+    \ explored for pseudo random number generator and data compression.\n\n**Gliders**\
+    \ - periodic structures with complex behaviour, universal computation and self-reproduction\
+    \ can be implemented with Rule 110.\n\n**Turing complete** - with a particular\
+    \ repeating background pattern Rule 110 is known to be Turing complete.\nThis\
+    \ implies that, in principle, **any** calculation or computer program can be simulated\
+    \ using such automaton!\n\n# Definition of Rule 110 \n\nThe following rule is\
+    \ applied to each triplet of the neighboring cells. Binary representation 01101110\
+    \ of 110 defines the transformation pattern.\n```\n1. Current iteration of the\
+    \ automaton\n            111  110  101  100  011  010  001  000\n            \
+    \ |    |    |    |    |    |    |    |\n             v    v    v    v    v   \
+    \ v    v    v\n2. The next iteration of the automaton\n            .0.  .1.  .1.\
+    \  .0.  .1.  .1.  .1.  .0.\n```\n\n# Interesting links for further reading\n\n\
+    * [Elemental Cellular Automaton Rule 110](http://www.comunidad.escom.ipn.mx/genaro/Rule110.html)\n\
+    * [Gliders in Rule 110](http://www.comunidad.escom.ipn.mx/genaro/Papers/Papers_on_CA_files/MARTINEZ.pdf)\n\
+    * [Compression-based investigation of the dynamical properties of cellular automata\
+    \ and other systems](https://arxiv.org/abs/0910.4042)\n"
+  how_to_test: "\n# Reset\n\nAfter **RESET** all cells will be set to 0 except the\
+    \ rightmost that is going to be 1. Automaton will immediately start running.\n\
+    Automaton produce new state every cycle for all the cells in parallel. One hardware\
+    \ cycle is one iteration of the automaton.\nAutomaton will run until **/HALT**\
+    \ pin is pulled low.\n\nThe following diagram shows 10 first iteration of the\
+    \ automaton after **RESET**.\n```\n                                          \
+    \            X\n                                                     XX\n    \
+    \                                                XXX\n                       \
+    \                            XX X\n                                          \
+    \        XXXXX\n                                                 XX   X\n    \
+    \                                            XXX  XX\n                       \
+    \                        XX X XXX\n                                          \
+    \    XXXXXXX X\n          automaton state on the             XX     XXX\n    \
+    \    10th iteration after RESET  ---->   XXX    XX X\n```\n\n# Read automaton\
+    \ state\n\nTo read state of the cells, 1) pull **/HALT** pin low and 2) set the\
+    \ cell block address pins.\n\nCells are read in 8 cell blocks and are addressed\
+    \ sequentially from right to left. Adress #0 represents the rightmost 8 cells.\n\
+    Adress #1 represents the cells from 16 to 9 on the rights and so forth.\n\n```\n\
+    \          automaton state on the \n        10th iteration after RESET  ---->\
+    \   XXX    XX X\n        00000000  ...  00000000000000000000011100001101\n   \
+    \     |      |              |       |       |       |\n        [adr#14]  ... \
+    \ [addr#3][addr#2][addr#1][addr#0]\n            cells are addressed in blocks\
+    \ of 8 bits\n```\n\n\n\nThe state of the 8 cells in the block will appear on the\
+    \ **Output** pins once the cell block address is set.\n\n```\nTiming diagram\n\
+    \nCLK   ___     ___     ___     ___     ___     ___           ___\n   __/   \\\
+    ___/   \\___/   \\___/   \\___/   \\___/   \\___ ... _/   \\___\n     |      \
+    \ |       |       |       |       |             |\n     |       |       |    \
+    \   |       |       |             |\n\nWRITE  ____                           \
+    \                      _______\n    \\__HALT__________________________________________\
+    \ ... _/ \n\nWRITE_______________  ______________  _______________\n   _/ ADDR#0\
+    \        \\/ ADDR#1       \\/ ADDR#2 \n\nREAD OUTPUT_______         ________ \
+    \       ________\n   ______/00001101\\_______/00000111\\______/00000000\\_  \n\
+    \              ^                ^\n              |                |\n       these\
+    \ are the expected values on\n          the 10th cycle after RESET\n\n      ____\n\
+    \      HALT  - /HALT, inverted halt automata\n      ADDR# - cell block address\
+    \ bits 0..4\n\n```\n\n# (Over)write automaton state\n\nTo write state of the cells,\
+    \ 1) pull **/HALT** pin low, 2) set the cell block address pins,\n3) set the new\
+    \ desired cell state on the **Input** pins and 4) finally pull **/WE** pin low.\n\
+    \nCells are updated in 8 cell blocks and are addressed sequentially from right\
+    \ to left. Adress #0 represents the rightmost 8 cells.\nAdress #1 represents the\
+    \ cells from 16 to 9 on the rights and so forth.\n\n```\nTiming diagram\n\nCLK\
+    \   ___     ___     ___     ___     ___     ___           ___\n   __/   \\___/\
+    \   \\___/   \\___/   \\___/   \\___/   \\___ ... _/   \\___\n     |       | \
+    \      |       |       |       |             |\n     |       |       |       |\
+    \       |       |             |\nWRITE  ____                                 \
+    \                _______\n    \\__HALT__________________________________________\
+    \ ... _/ \n\nWRITE_______________  ______________  _______________\n   _/ ADDR#0\
+    \        \\/ ADDR#1       \\/ ADDR#2\n\nWRITE INPUT_________  ______________ \
+    \ _____________\n   __/ 00000111     \\/ 11100110     \\/ 11010111    \\_\n\n\
+    WRITE______  __    ________  __    ________  __    __ ... _________\n        \
+    \   \\_WE___/        \\_WE___/        \\_WE___/\n                 wait 1 cycle\
+    \    wait 1 cycle\n\n         __\n    ____ WE   - /WE, inverted write enable \n\
+    \    HALT      - /HALT, inverted halt automata\n        ADDR# - cell block address\
+    \ bits 0..4\n\n```\n\nThe following diagram shows 10 cycles of automaton after\
+    \ **/HALT** pulled back to high.\n```\n\n      [adr#14]  ...  [addr#3][addr#2][addr#1][addr#0]\n\
+    \      |      |              |       |       |       |\n      00000000  ...  00000000110101111110011000000111\n\
+    \                             XX X XXXXXX  XX      XXX\n                     \
+    \       XXXXXXX    X XXX     XX X\n                           XX     X   XXXX\
+    \ X    XXXXX\n                          XXX    XX  XX  XXX   XX   X\n        \
+    \                 XX X   XXX XXX XX X  XXX  XX\n                        XXXXX\
+    \  XX XXX XXXXXX XX X XXX\n                       XX   X XXXXX XXX    XXXXXXXX\
+    \ X\n                      XXX  XXXX   XXX X   XX      XXX\n                 \
+    \    XX X XX  X  XX XXX  XXX     XX X\n10 cyles later ->   XXXXXXXX XX XXXXX X\
+    \ XX X    XXXXX\n\n\n```\n"
+  inputs:
+  - write cell 0 state
+  - write cell 1 state
+  - write cell 2 state
+  - write cell 3 state
+  - write cell 4 state
+  - write cell 5 state
+  - write cell 6 state
+  - write cell 7 state
+  language: Verilog
+  outputs:
+  - read cell 0 state
+  - read cell 1 state
+  - read cell 2 state
+  - read cell 3 state
+  - read cell 4 state
+  - read cell 5 state
+  - read cell 6 state
+  - read cell 7 state
+  picture: images/passed48.jpg
+  tag: cell automata, random number generator
+  title: Rule110 cell automata
+project:
+  source_files:
+  - tt_um_rejunity_rule110.v
+  tiles: 1x2
+  top_module: tt_um_rejunity_rule110_dup
+  wokwi_id: 0
+yaml_version: 4

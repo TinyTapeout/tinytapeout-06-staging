@@ -1,0 +1,51 @@
+documentation:
+  author: Nick Hay
+  bidirectional:
+  - 'sayhi: outputs greeting'
+  - read out multiplied matrix
+  - use xor rather than or
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Implements a 1bit 8x8 matrix multiple using a systolic array.
+  discord: nickhay
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - data 0
+  - data 1
+  - data 2
+  - data 3
+  - data 4
+  - data 5
+  - data 6
+  - data 7
+  language: Verilog
+  outputs:
+  - output 0
+  - output 1
+  - output 2
+  - output 3
+  - output 4
+  - output 5
+  - output 6
+  - output 7
+  picture: ''
+  tag: ''
+  title: Matrix multiply coprocessor (8x8 1bit)
+project:
+  source_files:
+  - main.v
+  tiles: 1x1
+  top_module: tt_um_nickjhay_processor_dup
+  wokwi_id: 0
+yaml_version: 4

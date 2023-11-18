@@ -1,0 +1,57 @@
+documentation:
+  author: Matt Venn
+  bidirectional:
+  - debug encoder bit 0
+  - debug encoder bit 1
+  - debug encoder bit 2
+  - debug encoder bit 3
+  - debug encoder bit 4
+  - debug encoder bit 5
+  - debug encoder bit 6
+  - debug encoder bit 7
+  clock_hz: 10000000
+  description: Use 3 rotary encoder to control 3 PWM generators
+  discord: mattvenn
+  doc_link: ''
+  external_hw: ''
+  how_it_works: '3 PWM generators are fed by 3 debounced encoder peripherals.
+
+    '
+  how_to_test: "Connect 3 digital rotary encoders to the first 6 inputs. Changing\
+    \ the encoders will change the PWM outputs on the first 3 outputs.\n\nSelect a\
+    \ channel with the debug enc sel bits and that channel's encoder internal value\
+    \ will be output to the bidirectional outputs. \nThe output of the 2 debouncers\
+    \ will also be output.\n"
+  inputs:
+  - encoder 0 pin a
+  - encoder 0 pin b
+  - encoder 1 pin a
+  - encoder 1 pin b
+  - encoder 2 pin a
+  - encoder 2 pin b
+  - debug encoder select bit 0
+  - debug encoder select bit 1
+  language: Verilog
+  outputs:
+  - pwm 0
+  - pwm 1
+  - pwm 2
+  - debug debounce a
+  - debug debounce b
+  - n/a
+  - n/a
+  - n/a
+  picture: ''
+  tag: pwm, led
+  title: RGB Mixer
+project:
+  source_files:
+  - tt_um_rgb_mixer.v
+  - rgb_mixer.v
+  - encoder.v
+  - debounce.v
+  - pwm.v
+  tiles: 1x1
+  top_module: tt_um_rgb_mixer_dup
+  wokwi_id: 0
+yaml_version: 4

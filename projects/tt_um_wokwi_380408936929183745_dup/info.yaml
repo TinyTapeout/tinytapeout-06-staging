@@ -1,0 +1,50 @@
+documentation:
+  author: bignug13
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: 'For Supercon 2023: Some logic gates that add things'
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Inputs 1-4 (Values: 1,2,4,8) and Inputs 5-8 (Values: 1,2,4,8) are
+    added together and reflected in Outputs 1-5 (Values: 1,2,4,8,16).
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: ''
+  title: Tapeout Test
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380408936929183745_dup
+  wokwi_id: 0
+yaml_version: 4

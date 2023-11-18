@@ -1,0 +1,50 @@
+documentation:
+  author: Joey Castillo
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Divides the clock input eight times, with CLK/2 on OUT7, CLK/4 on OUT6,
+    etc.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - CLK/256
+  - CLK/128
+  - CLK/64
+  - CLK/32
+  - CLK/16
+  - CLK/8
+  - CLK/4
+  - CLK/2
+  picture: ''
+  tag: ''
+  title: Clock Divider
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380408594272345089_dup
+  wokwi_id: 0
+yaml_version: 4

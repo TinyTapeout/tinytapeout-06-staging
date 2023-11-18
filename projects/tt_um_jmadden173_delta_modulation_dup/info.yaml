@@ -1,0 +1,79 @@
+documentation:
+  author: John Madden
+  bidirectional:
+  - parameter off_spike
+  - input load_prev bit
+  - nc, constant output low
+  - nc, constant output low
+  - input force_prev bit 0
+  - input force_prev bit 1
+  - input force_prev bit 2
+  - input force_prev bit 3
+  clock_hz: 10000000
+  description: Delta Modulation for Spiking Neural Networks (SNN) based on snnTorch's
+    implementation.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'A spike is generated if the difference between the current and previous
+    data inputs is greater than a specified input threshold. The design is meant to
+    mimic the implementation of delta modulation in the [snnTorch](https://snntorch.readthedocs.io/en/latest/snntorch.spikegen.html#snntorch.spikegen.delta)
+    python package. Each clock cycle is treated as an input/output, therefore there
+    can be consecutive spikes that appear to be constantly high.
+
+
+    The input parameter, `off_spike`, enables spike generation when negative threshold
+    is exceeded. A negative spike is represented by `spike[1] = 0`. A positive spike
+    is represented by `spike[0] = 1`.
+
+
+    All numerical inputs and outputs are unsigned 4-bit integers. You are able to
+    (1) input the `data` value, the input (2) the `threshold` for a spike to be generated,
+    and (3) a value for the previous register for debugging.
+
+
+    The previous data register is included to be facilitate debugging with the ability
+    to read the current value in the register and force the register to a specific
+    value.
+
+    '
+  how_to_test: 'The module is intended to have a digital input, such as an ADC with
+    a parallel output that is directly fed into the `data` input with a shared `clk`
+    signal. The `threshold` is meant to be tied to a constant value. The module outputs
+    through `spikes` net.
+
+
+    For simpler testing, the input does not need to be matched to the `clk`. With
+    the `threshold` set, `data` can be changed and spikes can be viewed on an oscilloscope.
+
+    '
+  inputs:
+  - input threshold bit 0
+  - input threshold bit 1
+  - input threshold bit 2
+  - input threshold bit 3
+  - input data bit 0
+  - input data bit 1
+  - input data bit 2
+  - input data bit 3
+  language: Verilog
+  outputs:
+  - spike bit 0
+  - spike bit 1
+  - nc, constant output low
+  - nc, constant output low
+  - reg prev bit 0
+  - reg prev bit 1
+  - reg prev bit 2
+  - reg prev bit 3
+  picture: ''
+  tag: snn, test
+  title: Delta Modulation Spike Encoding
+project:
+  source_files:
+  - tt_um_delta_modulation.v
+  - delta.v
+  tiles: 1x1
+  top_module: tt_um_jmadden173_delta_modulation_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,34 @@
+documentation:
+  author: Mingkai Chen
+  bidirectional:
+  - Data
+  clock_hz: 0
+  description: 8-bit stack machine
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Simple 8-bit stack machine
+
+    '
+  how_to_test: 'Test in hardware or with simulation
+
+    '
+  inputs:
+  - Data
+  language: SystemVerilog
+  outputs:
+  - Data
+  picture: ''
+  tag: ''
+  title: Stack Machine
+project:
+  source_files:
+  - tt_um_mingkaic1_stack_machine.sv
+  - Top.sv
+  - RegFile.sv
+  - Stack.sv
+  - ALU.sv
+  tiles: 1x2
+  top_module: tt_um_mingkaic1_stack_machine_dup
+  wokwi_id: 0
+yaml_version: 4

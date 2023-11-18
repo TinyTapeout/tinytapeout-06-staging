@@ -1,0 +1,51 @@
+documentation:
+  author: Sunao Furukawa
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 50000000
+  description: This Verilog code is geenrated by Bing AI
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - instruction register [0]
+  - instruction register [1]
+  - instruction register [2]
+  - instruction register [3]
+  - formula right side [4]
+  - formula right side [5]
+  - formula right side [6]
+  - formula right side [7]
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: ''
+  title: cpu_8bit
+project:
+  source_files:
+  - tt_um_sunaofurukawa_cpu_8bit.v
+  tiles: 1x1
+  top_module: tt_um_sunaofurukawa_cpu_8bit_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,51 @@
+documentation:
+  author: akita11
+  bidirectional:
+  - output of inv1
+  - output of inv2
+  - output of inv3
+  - output of inv4
+  - output of inv5
+  - output of inv6
+  - output of inv7
+  - output of inv8
+  clock_hz: 10000000
+  description: 8 inv and counter.
+  discord: mattvenn
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'This is a blink.
+
+    '
+  how_to_test: 'Check reset, ena, counter function.
+
+    '
+  inputs:
+  - inv1
+  - inv2
+  - inv3
+  - inv4
+  - inv5
+  - inv6
+  - inv7
+  - inv8
+  language: Verilog
+  outputs:
+  - counter[15]
+  - counter[14]
+  - counter[13]
+  - counter[12]
+  - counter[11]
+  - counter[10]
+  - counter[9]
+  - counter[8]
+  picture: ''
+  tag: timer, test
+  title: RO and counter
+project:
+  source_files:
+  - tt_um_blink.v
+  tiles: 1x1
+  top_module: tt_um_blink_dup
+  wokwi_id: 0
+yaml_version: 4

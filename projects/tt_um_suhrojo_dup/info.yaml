@@ -1,0 +1,55 @@
+documentation:
+  author: Rogelio Franco
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: Silicon Chip design of a CNN
+  discord: mattvenn
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how the project works later...
+
+    '
+  how_to_test: 'After reset, the counter should increase by one every second with
+    a 10MHz input clock.
+
+    Experiment by changing the inputs to change the counting speed.
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: timer, test
+  title: Convolutional Network Circuit Chip Design
+project:
+  source_files:
+  - tt_um_suhrojo.v
+  - convLayer.v
+  tiles: 1x1
+  top_module: tt_um_suhrojo_dup
+  wokwi_id: 0
+yaml_version: 4

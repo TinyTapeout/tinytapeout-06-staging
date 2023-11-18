@@ -1,0 +1,99 @@
+documentation:
+  author: Mike Bell
+  bidirectional:
+  - SPI MOSI / D0
+  - SPI MISO / D1
+  - D2
+  - D3
+  - Debug bit 0
+  - Debug bit 1
+  - Debug bit 2
+  - Debug bit 3
+  clock_hz: 10000000
+  description: SPI RAM/ROM/Random source
+  discord: rebelmike
+  doc_link: ''
+  external_hw: A custom RP2040 board to make full use of the ROM
+  how_it_works: 'The project implements an 8 byte RAM, 324 byte ROM and a random source
+    supporting standard SPI read/write (03h/02h) and SPI quad read/write (6Bh/32h)
+    commands.  The quad read commands have 2 delay cycles.
+
+
+    The address map is:
+
+
+    | Address | Item |
+
+    | ------- | ---- |
+
+    | 0x000   | RP2040 boot stage 2 ROM |
+
+    | 0x100   | 8 byte RAM, wrapped 32 times |
+
+    | 0x200   | RP2040 program ROM |
+
+    | 0x300   | Mirror of the RAM |
+
+    | 0x400   | Random source |
+
+
+    See the [README](https://github.com/MichaelBell/tt05-spi-peripheral/blob/main/README.md)
+    for more details.
+
+
+    Note the default project clk is a debug clock only, the project is internally
+    clocked off SPI CLK, input 0.
+
+    '
+  how_to_test: 'You will need to use an SPI/QSPI master, unfortunately it was not
+    possible to set up the pinout to support both QSPI and match the native RP2040
+    SPI block, so you''ll need a PIO (Q)SPI implementation.  I''ll make that available
+    before the chips are available.
+
+
+    The values in the RAM may be inspected by setting the address on the input toggle
+    switches 2-5 and pressing the single clock button to latch the data, which is
+    displayed on the 7 segment display and presented on uio pins 4-7.  The default
+    project clock should otherwise not be used - the project is clocked from the SPI
+    clock.
+
+
+    The project is also designed to be used as a ROM connected to an RP2040''s QSPI
+    pins (instead of the more normal flash).  You''ll need a custom board for this
+    as the QSPI pins are generally connected directly to a flash chip, I have a couple
+    which I could potentially send to interested people in the UK - contact me on
+    Discord.
+
+    '
+  inputs:
+  - SPI CLK
+  - SPI CSn
+  - Debug nibble select
+  - Debug addr 0
+  - Debug addr 1
+  - Debug addr 2
+  - Unused
+  - Unused
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot (Set to SPI CSn)
+  picture: ''
+  tag: spi, memory, qspi, rom, random
+  title: SPI Peripheral
+project:
+  source_files:
+  - top.v
+  - decoder.v
+  - spi_peri.v
+  - ring_oscillator.v
+  tiles: 1x1
+  top_module: tt_um_MichaelBell_spi_peri_dup
+  wokwi_id: 0
+yaml_version: 4

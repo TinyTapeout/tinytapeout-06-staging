@@ -1,0 +1,46 @@
+documentation:
+  author: Manju Shettar
+  bidirectional:
+  - uio_in: Reserved for future use.
+  clock_hz: 10000000
+  description: Count up to 10, one second at a time.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "This project emulates a two-layer neural network using a series of\
+    \ integrate and fire neurons defined in Verilog. The neurons accumulate incoming\
+    \ spikes and when their cummulative signal surpasses a defined threshold, they\
+    \ generate a spike and reset their potential.\n\nThe network is composed of two\
+    \ neuron layers. The first input layer accepts two 16-bit inputs, corresponding\
+    \ to external stimuli or current, which the neurons of the first layer will processes.\
+    \ Based on the internal states of these neurons, they may or may not fire to generate\
+    \ spikes. \n\nThe spikes that are generated from the first layer are used as input\
+    \ to the second layer. In this model, a spike is defined asw a binary high signal,\
+    \ translated into a 16-bit value to mimic the input current standard. If there\
+    \ is no spike, there is no input current (zero).\n\nThe second layer defines the\
+    \ neural network's output. Each neuron in the second layer may generate a spike,\
+    \ which is represented again with a bit. \n"
+  how_to_test: "Testing involves applying different input stimuli (current) and observing\
+    \ spiking states.\n\nBy changing the values of 'input1' and 'input2', and observing\
+    \ the output layers, we can observe different spiking outputs from the neural\
+    \ network.  \n"
+  inputs:
+  - input1[15:0]: 16-bit stimulus input to the first layer's first neuron.
+  - input2[15:0]: 16-bit stimulus input to the first layer's second neuron.
+  - clk: Clock signal.
+  - rst_n: Reset signal; when low, it resets the neurons' current and output spikes.
+  language: Verilog
+  outputs:
+  - output_layer2[1]: Spiking status of the first neuron in the second layer
+  - output_layer2[0]: Spiking status of the second neuron in the second layer
+  picture: ''
+  tag: ''
+  title: ECE 183 - Integrate and Fire Network Chip Design
+project:
+  source_files:
+  - if_network.v
+  - tt_um_seven_segment_seconds.v
+  tiles: 1x1
+  top_module: tt_um_manjushettar_dup
+  wokwi_id: 0
+yaml_version: 4

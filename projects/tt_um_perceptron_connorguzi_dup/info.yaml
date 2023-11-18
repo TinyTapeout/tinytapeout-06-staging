@@ -1,0 +1,61 @@
+documentation:
+  author: Connor Guzikowski
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: Taking in the number of curves and edges of a number, the output is
+    the expected number.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Takes in a 7 bit input, with the 3 leftmost bits being the number
+    of edges of a number, and the other bits are the numbers of curves in the number.
+
+    The output has 8 bits, separated into two halves the first half is the output
+    of the perceptron, and the second half is the output of the binary neural network.
+
+    '
+  how_to_test: 'After reset, the counter should increase by one every second with
+    a 10MHz input clock.
+
+    Experiment by changing the inputs to change the counting speed.
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: timer, test
+  title: Perceptron and basic binary neural network
+project:
+  source_files:
+  - tt_um_perceptron_connorguzi.v
+  - perceptron.v
+  - bnn.v
+  tiles: 1x1
+  top_module: tt_um_perceptron_connorguzi_dup
+  wokwi_id: 0
+yaml_version: 4

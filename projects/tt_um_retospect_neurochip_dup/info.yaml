@@ -1,0 +1,82 @@
+documentation:
+  author: Reto Stamm
+  bidirectional:
+  - reset_nn reset neural network (active high)
+  - bs_in bitstream readout
+  - bs_out bitstream input
+  - config_en - shift bitstream
+  - output axon 8
+  - output axon 9
+  - dendritic input 9
+  - dendritic input 8
+  clock_hz: 10000000
+  description: A collection of 50 interconnected simulated leaky neurons that can
+    be programmed to do cognitive tasks.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Neuromorphic neural nets are more power efficient than traditional\
+    \ machine learning. \nIt replicates an array of leaky neurons, a simple structure\
+    \ that exists in the brain.\nThis design defines a Field Programmable Neural Array\
+    \ (FPNA). (1)\n\nA mental model for a leaky neuron is a capacitor that drains\
+    \ at some rate. \nIt gets charged up by some amount (its weight) whenever an input\
+    \ (a dendrite) receives a pulse from somewhere else.\nIt sends a pulse (fire)\
+    \ its output (axon) when it reaches a specified level.\n\nThis circuit contains\
+    \ an array of 5*10 interconnected, heavily simplified configurable neuron blocks\
+    \ (CNBs). \nInstead of continuous weights, we have three bits per weight.\nInstead\
+    \ of a continuous decay of the charge in the capacitor, it halves at a somewhat\
+    \ configurable interval.\nEach CNB has its own set of weights, and a somewhat\
+    \ configurable rate of decay.\nIn this design, each CNB had 4 inputs (dendrites),\
+    \ each with its own weight, one output (axon), and a choice of 8 different time\
+    \ decays. \n\nAn array of neuromorphic CNBs (Configurable Neuron Blocks). Each\
+    \ CNB has a \n4 inputs, and each input has an associated weight that gets added\
+    \ to the CNBs membrane potential whenever the relevant input fires. \nWhen a CNB\
+    \ reaches a treshhold (rolls over, in this case), it fires and sends a pulse to\
+    \ 3 of its neighbours.\nEach CNB is subscribed to one of 8 decay clock tools.\
+    \ \n\nThe configuration data (Bitstream, or BS), including all the weights, the\
+    \ desired timing divisions, and the weights for each CNB are shifted in through\
+    \ the bs_in pin when the config_en pin is high.\nThe BS can be read back from\
+    \ the bs_out pin. \n\n\nThe naxon tool is an example that shows how to train a\
+    \ neural network, generate all the relevant data and the BS that is needed to\
+    \ configure that model into this design\n[https://github.com/retospect/naxon](https://github.com/retospect/naxon).\n\
+    More up-to-date design documents may also be found there.\n\n**References**\n\
+    (1) [Eshraghian, Jason K., Max Ward, Emre Neftci, Xinxin Wang, Gregor Lenz, Girish\
+    \ Dwivedi, Mohammed Bennamoun, Doo Seok Jeong, and Wei D. Lu. 2023. \u201CTraining\
+    \ Spiking Neural Networks Using Lessons From Deep Learning.\u201D](http://arxiv.org/abs/2109.12894)\n"
+  how_to_test: 'After reset, clock in the bitstream to configure all the weights and
+    stuff.
+
+    Then clock in the test data from the generated test bench from naxon, and see
+    the appropriate answer come out!
+
+    '
+  inputs:
+  - dendritic input 0
+  - dendritic input 1
+  - dendritic input 2
+  - dendritic input 3
+  - dendritic input 4
+  - dendritic input 5
+  - dendritic input 6
+  - dendritic input 7
+  language: Verilog, Python, PyTorch and SNNTorch
+  outputs:
+  - output axon 0
+  - output axon 1
+  - output axon 2
+  - output axon 3
+  - output axon 4
+  - output axon 5
+  - output axon 6
+  - output axon 7
+  picture: img/diagram.png
+  tag: neuromorphic, neuron, ml, ai, fpna, cnb, neural
+  title: Field Programmable Neural Array
+project:
+  source_files:
+  - decoder.v
+  - tt_um_retospect_neurochip.v
+  tiles: 4x2
+  top_module: tt_um_retospect_neurochip_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,49 @@
+documentation:
+  author: Aldo
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: A Pipelined Booth Multiplier
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Not operation inteded, just for learning purposes \n"
+  how_to_test: "Not operation inteded, just for learning purposes \n"
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  picture: ''
+  tag: ''
+  title: 4 Bit Pipelined Multiplier
+project:
+  source_files:
+  - tt_um_4_bit_pipeline_multiplier.v
+  - multi.v
+  - adder.v
+  tiles: 1x1
+  top_module: tt_um_4_bit_pipeline_multiplier_dup
+  wokwi_id: 0
+yaml_version: 4

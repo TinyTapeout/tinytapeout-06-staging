@@ -1,0 +1,52 @@
+documentation:
+  author: Andrew Nam
+  bidirectional:
+  - Not used
+  - Not used
+  - Not used
+  - Not used
+  - Not used
+  - Not used
+  - Not used
+  - Not used
+  clock_hz: 0
+  description: This is an extremely professional design that Steve Jobs approves.
+    It consists of a 2-bit ALU and an impressive dice. Can translate binary code into
+    single digit display.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - IN0: Input A0
+  - IN1: Input A1
+  - IN2: Not used
+  - IN3: Selection bit (0,0)--> Addition, (0,1)--> Subtraction, (1,0)--> Logic AND,
+      (1,1)--> Logic OR
+  - IN4: Selection bit
+  - IN5: Selection bit (0)--> ALU, (1)--> Dice
+  - IN6: Input B0
+  - IN7: Input B1
+  language: Wokwi
+  outputs:
+  - segment a: Normal digit display
+  - segment b: Normal digit display
+  - segment c: Normal digit display
+  - segment d: Normal digit display
+  - segment e: Normal digit display
+  - segment f: Normal digit display
+  - segment g: Normal digit display
+  - dot
+  picture: ''
+  tag: ''
+  title: 2-Bit ALU + Dice
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380477805171811329_dup
+  wokwi_id: 0
+yaml_version: 4

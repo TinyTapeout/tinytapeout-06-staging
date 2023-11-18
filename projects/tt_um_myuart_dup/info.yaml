@@ -1,0 +1,50 @@
+documentation:
+  author: LogicComputing
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 10000000
+  description: A small UART that outputs my name
+  discord: RichyGon#6846
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'This design contains a small UART that will output a string every
+    ~1s. No input is required. It expect a 10 MHz clock.
+
+    '
+  how_to_test: 'You simply need to connect an UART RX on uo_out[0] and you will see
+    my name ! UART is 115200 baud, one start bit, eight bit of data, one parity bit
+    and one stop bit. I generate a sinus signal on uo_out[7:1].
+
+    '
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - uo_out[0]: UART with my name every ~1s.
+  - uo_out[7:1]: A sinus is generated.
+  picture: ''
+  tag: uart, interface
+  title: MyUART
+project:
+  source_files:
+  - tt_um_myuart.v
+  - uart_tx.v
+  - sync_async_reset.v
+  tiles: 1x1
+  top_module: tt_um_myuart_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,65 @@
+documentation:
+  author: Ruhai Lin
+  bidirectional:
+  - adaptive_threshold_enable bit 0
+  - adaptive_beta_enable bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - spike bit 7
+  clock_hz: 10000000
+  description: Adaptive LIF Neuron
+  discord: birdboss
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "When a LIF (Leaky - Integrate and Fire) neuron integrates enough\
+    \ current stimulation, \nit will be activated and Fire once spike. This current\
+    \ is introduced by the 8-bit chip input pin, but while integrating, \nthe LIF\
+    \ neuron gradually loses the previously accumulated current like an hourglass,\
+    \ \nso it is called Leaky. this module implements this biological behavior with\
+    \ a mathematical equation. \nThe state of the neuron can be monitored externally\
+    \ through the 8-bit chip output pins.\n\nThe LIF neuron module also includes adaptive\
+    \ threshold and adaptive decay rate to \ndynamically adjust its own fire threshold\
+    \ or decay rate. The adaptive threshold can be enabled by \nsetting bit 0 of the\
+    \ bidirectional IO, and the adaptive decay rate can be enabled by setting bit\
+    \ 1 of the bidirectional IO. \nsimulations show that this allows the LIF neuron\
+    \ to enhance the sparsity of spikes while preserving the input features, \nwhich\
+    \ improves the efficiency of the chip.\n"
+  how_to_test: "LIF neurons will receive current inputs in three different gears (strong,\
+    \ medium, and weak). \nThe spike rate should be higher when the current is stronger\
+    \ and lower when the current is weaker. \nAfter turning on adaptive threshold\
+    \ and adaptive decay rate the chip needs to retain this feature \nwhile trying\
+    \ to enhance sparsity to avoid neurons that fire frequently or not at all, \n\
+    to make it consistent with realistic biological characteristics.\n"
+  inputs:
+  - current bit 11
+  - current bit 12
+  - current bit 13
+  - current bit 14
+  - current bit 15
+  - current bit 16
+  - current bit 17
+  - current bit 18
+  language: Verilog
+  outputs:
+  - membrane a
+  - membrane b
+  - membrane c
+  - membrane d
+  - membrane e
+  - membrane f
+  - membrane g
+  - membrane h
+  picture: ''
+  tag: LIF neuron, SNN
+  title: Leaky-Integrated Fire Neuron
+project:
+  source_files:
+  - lif.v
+  - tt_um_adaptive_lif.v
+  tiles: 1x1
+  top_module: tt_um_adaptive_lif_dup
+  wokwi_id: 0
+yaml_version: 4

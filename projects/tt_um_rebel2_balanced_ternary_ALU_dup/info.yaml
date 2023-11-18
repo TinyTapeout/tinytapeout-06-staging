@@ -1,0 +1,56 @@
+documentation:
+  author: Ole Christian Moholth and Steven Bos
+  bidirectional:
+  - uio_in[7] b0H
+  - uio_in[6] b0L
+  - uio_in[5] a1H
+  - uio_in[4] a1L
+  - uio_in[3] a0H
+  - uio_in[2] a0L
+  - uio_in[1] unused
+  - uio_in[0] unused
+  clock_hz: 0
+  description: This 2-trit balanced ternary ALU is part of the REBEL-2 balanced ternary
+    logic CPU
+  discord: steveb#6973
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'WIP. This balanced ternary ALU has several operations based on a
+    novel REBEL-2 ISA. Operations include MIN,MAX,ADD,SUB,MUL,CMP,SHFT and can be
+    done trit-wise or word-wise. This project is designed, generated and verified
+    with Mixed Radix Circuit Synthesizer (MRCS).
+
+    '
+  how_to_test: 'There are many automated test included for MRCS. A verilog testbench
+    for FPGA and FPGA constraint file is WIP.
+
+    '
+  inputs:
+  - ui_in[7]  func2H
+  - ui_in[6]  func2L
+  - ui_in[5]  func1H
+  - ui_in[4]  func1L
+  - ui_in[3]  func0H
+  - ui_in[2]  func0L
+  - ui_in[1]  b1H
+  - ui_in[0]  b1L
+  language: MRCS
+  outputs:
+  - uo_out[7] carryH
+  - uo_out[6] carryL
+  - uo_out[5] out1H
+  - uo_out[4] out1L
+  - uo_out[3] out0H
+  - uo_out[2] out0L
+  - uo_out[1] unused
+  - uo_out[0] unused
+  picture: overview.png
+  tag: balanced ternary, ALU, REBEL-2, USN
+  title: REBEL-2 Balanced Ternary ALU
+project:
+  source_files:
+  - c_tt_um_rebel2_balanced_ternary_ALU_singlefile.v
+  tiles: 1x1
+  top_module: tt_um_rebel2_balanced_ternary_ALU_dup
+  wokwi_id: 0
+yaml_version: 4

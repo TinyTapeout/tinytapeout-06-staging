@@ -1,0 +1,89 @@
+documentation:
+  author: Timonas Juonys
+  bidirectional:
+  - shift_reg_en (when D0 low, shift register ff mirror vertical pixels,when D0 high,
+    then the shifting can start)
+  - shift_reg_clk for vertical pixels
+  - not used, pulled low internally
+  - not used, pulled low internally
+  - mux_clk - multiplexes between padle1, padle2, and ball, as the led matrix can
+    only display one at a time
+  - padles_en enable padle counters
+  - ball_en enable ball counters
+  - inp_reg_en enables input register. this should happen when clk=1, ball_en=0, padles_en=0
+  clock_hz: 0
+  description: Hardware implemented ping pong for two players on a 16x24 led matrix
+    as a display
+  discord: '796022592732397668'
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Explain how your project works\nThe game uses a up/down counter for\
+    \ x/y for each player plus the ball. Button inputs are stored in input register,\
+    \ so bouncing should not be an issue.\nRest pin (active low) should be pulsed\
+    \ low at every start up to clear all the clock registers. If this is not done,\n\
+    the multiple internal clock divider flip flops might start out wrong, and that\
+    \ could mess up other functions. The ball gets updated with every ball_en pulse,\
+    \ while the padles are updated\nwith the padles_en pulse. These canot happen at\
+    \ the same time because then the could jump past the padles. The comparator logic\
+    \ is asyncronous, and it will reverse the balls direction if it \nregisters a\
+    \ collision.\n\nSince the led matrix can only light 1 collum or 1 row at any one\
+    \ time, the 3 objects to be lit(padle1, padle2, and the ball) have to be lit for\
+    \ a period of time before the next object is lit.\nthis is achieved by the inner\
+    \ multiplexer which is driven byt a mod 3 counter which is driven byt the multiplexer\
+    \ clock. The chip outputs are the outputs of this multiplexer (some logic is done\
+    \ after \nthe multiplexer but it is irrelevant). The x pixels (horizontal axis)\
+    \ is not decoded internally, and thus have to be decoded externally. They are\
+    \ connected as horz0 to horz4 pins. \nEven though there are 5 bits, the led display\
+    \ is only 24leds wide, so only a 5 to 24 decodes is necesary. The y pixels are\
+    \ decoded internaly since they need some processing done on them because\nthey\
+    \ have to light multiple leds if a padle is to be lit contra one led for the ball.\
+    \ Thats why the y pixels get decoded and placed in a piso shift register which\
+    \ is controlled by D0 and D1.\nShifting out these bits needs to be carefully timed\
+    \ with the multiplexer clock since the mux_clk is the one who decites which outputs\
+    \ (padle1, padle2, or ball) are in the shift register in the first place. \nMuxes\
+    \ for horixzontal pins and vertical pins are driven byt he same celect lines,\
+    \ so both x and y bits represent the same object at anny given time.\n\nplayer1\
+    \ and player 2 points pins are meant to go into a decade cointer driveing a 7\
+    \ segment display. If a pause is wanted after a point os scored, these two can\
+    \ be monitored and the clk_in can be stoped \nto pause the game. The position\
+    \ registers are reset internally, so its not necessary to reset the whole chip\
+    \ at every point score.\n\nmaybe important:\npixel[0,0] is in the bootm left corner\n"
+  how_to_test: "Explain how to test your project\neasiest way to test some functionality\
+    \ would be to hook up left right buttons for player 1, pull padels_en high, set\
+    \ the mux_clk low, and a clk on the clock line. As long as the board has been\
+    \ reset and the mux clk has not\nbeen active after that, the outputs will be of\
+    \ padle1. Then the horz0 to horz4 bits can be monitored. They should be still\
+    \ if no button has been presed, count up when the right button is pressed, \n\
+    and count down when teh left button is pressed. The ball_en should be puuled low\
+    \ to freze the ball. If the ball goes of the screen, padles1_x will reset to 0.\n\
+    \nfor full functionality the chip will need 16 bit sipo shift register, 5 to 24\
+    \ decoder, 16*24 led matrix, 8 input buttons, bcd counters + 7 segment displays\
+    \ to display points and a timing unit\nto generate the necesary timing signals,\
+    \ padles_en, ball_en, mux_clk, shift_reg_en, shift_reg_clk and inp_reg_en\n"
+  inputs:
+  - player1_up button
+  - player1_down button
+  - player1_left button
+  - player1_right button
+  - player2_up button
+  - player2_down button
+  - player2_left button
+  - player2_right button
+  language: Wokwi
+  outputs:
+  - horz0 (lsd)
+  - horz1 binary encoded position in the x direction
+  - horz2
+  - horz3
+  - horz4
+  - points player1 pulses when player 1 gets a point
+  - points player2
+  - vertical pixels shift register out
+  picture: ''
+  tag: ''
+  title: ping pong asic
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380361576213660673_dup
+  wokwi_id: 0
+yaml_version: 4

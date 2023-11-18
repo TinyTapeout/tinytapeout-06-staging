@@ -1,0 +1,57 @@
+documentation:
+  author: William Bodeau
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: A single LIF neuron with post-synaptic STDP learning.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Oh god I don''t wanna
+
+    '
+  how_to_test: 'Oh god I don''t wanna
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: ''
+  title: STDP Neuron
+project:
+  source_files:
+  - tt_um_gharenthi_top.v
+  - add1.v
+  - add8.v
+  - decay.v
+  - neuron.v
+  - reg8.v
+  - synapse.v
+  tiles: 1x1
+  top_module: tt_um_gharenthi_top_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,61 @@
+documentation:
+  author: CE JMU Wuerzburg
+  bidirectional:
+  - opcode[0]
+  - opcode[1]
+  - opcode[2]
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: A simple 4-Bit ALU which contains two types of adders, multipliers,
+    a comparator and a barrel-shifter
+  discord: myzinsky
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'The ALU contains a ripple carry adder, a carry lookahead adder, a
+    matrix multiplier, a wallace-tree multiplier, a comparator and a barrel-shifter.
+    Everything is implemented fully combinational. A 3-bit opcode is used to select
+    the respective component.
+
+    '
+  how_to_test: 'No clock is required. The first 4 input bits a[3...0] form the first
+    operand, the last 4 input bits b[3...0] form the second operand. The outputs s[7...0]
+    are used for the compuational results, the results for shifting a, or the results
+    of comparing a with b. The bidirectional input bits 0, 1 and 2 are used as opcode
+    to select the component, c.f. Figure above. If the barrel-shifter is used, a[3...0]
+    will be shifted, b[1...0] is used to specify the shift width, whereas b[2] selects
+    the shift direction.
+
+    '
+  inputs:
+  - a[0]
+  - a[1]
+  - a[2]
+  - a[3]
+  - b[0]
+  - b[1]
+  - b[2] (0 = shift right, 1 = shift left)
+  - b[3]
+  language: VHDL
+  outputs:
+  - s[0] (1, if $a > b$)
+  - s[1] (1, if $a < b$)
+  - s[2] (1, if $a == b$)
+  - s[3]
+  - s[4]
+  - s[5]
+  - s[6]
+  - s[7]
+  picture: resources/4-Bit-ALU.png
+  tag: alu, combinational, 4-bit, adder, multiplier, comperator, barrel shifter
+  title: 4-Bit ALU
+project:
+  source_files:
+  - tt_um_cejmu.v
+  tiles: 1x1
+  top_module: tt_um_cejmu_dup
+  wokwi_id: 0
+yaml_version: 4

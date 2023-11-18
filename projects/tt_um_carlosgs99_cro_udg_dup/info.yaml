@@ -1,0 +1,47 @@
+documentation:
+  author: Carlos Guerra & Marco Gurrola
+  bidirectional:
+  - Segment a
+  - Segment b
+  - Segment c
+  - Segment d
+  - Segment e
+  - Segment f
+  - Segment g
+  - dot
+  clock_hz: ''
+  description: 6 digit chronometer. Displays 2 digits for minutes, 2 digits for seconds
+    and 2 digits for hundredths of a second.
+  discord: ''
+  doc_link: ''
+  external_hw: You need six 7 segment common cathode displays, push buttons.
+  how_it_works: "The project consists of a 50 MHz chronometer in which minutes, seconds\
+    \ and hundredths of a second are shown through six 7 \nsegment displays. It can\
+    \ be initialized or paused pressing the start button, pressing the reset button\
+    \ will cause it to restart the counter.\n"
+  how_to_test: "For testing the chronometer project connect push buttons to the reset\
+    \ and bt_ent (start button) inputs. It is designed to \nwork with six 7 segment\
+    \ common cathode displays. Unidirectional output pins must be connected to displays\
+    \ cathodes. \nBidirectioanl output pin must be connected to displays anodes.\n"
+  inputs:
+  - bt_ent (start button)
+  - reset
+  - clk
+  language: Verilog
+  outputs:
+  - Display cathode 1
+  - Display cathode 2
+  - Display cathode 3
+  - Display cathode 4
+  - Display cathode 5
+  - Display cathode 6
+  picture: ''
+  tag: chronometer, timer, verilog
+  title: 6 digit chronometer.
+project:
+  source_files:
+  - cro_udg.v
+  tiles: 1x1
+  top_module: tt_um_carlosgs99_cro_udg_dup
+  wokwi_id: 0
+yaml_version: 4

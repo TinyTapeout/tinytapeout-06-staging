@@ -1,0 +1,63 @@
+documentation:
+  author: Gerrit Grutzeck
+  bidirectional:
+  - not used
+  - not used
+  - not used
+  - not used
+  - not used
+  - not used
+  - not used
+  - not used
+  clock_hz: 10000000
+  description: Three different ring oscillator, with different temperature dependence
+  discord: liggi.iggil
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "This design implements three different ring oscillators. The first\
+    \ one is a basic NAND \nbased oscillator. The second one adds additional NAND\
+    \ gates to the outputs of the stages\nof the oscillator to increase the capacitve\
+    \ loading. The last one uses the tri-state\ninverts with a sub-threshold tri-state\
+    \ enable. \n\nFor measuring the frequencies each oscillator is driving a counter.\
+    \ This counters are\nlatched with the latch counter input. With the input transfer\
+    \ counter the currently \nselected counter (counter select bits) is transfered\
+    \ via the serial data stream. The \ntransfer is driven by the clock of the design.\
+    \ As encoding a manchester encoding is used. \n\nFurthermore, a divided version\
+    \ of the clock of each oscillator is outputted. The divisior\ncan be configured\
+    \ with the frequency selection bits. \n"
+  how_to_test: 'TODO
+
+    '
+  inputs:
+  - latch counter
+  - counter reset
+  - transfer counter
+  - counter select bit 0
+  - counter select bit 1
+  - select latch counter (sync/async)
+  - frequency divider select bit 0
+  - frequency divider select bit 1
+  language: Verilog
+  outputs:
+  - not used
+  - not used
+  - not used
+  - not used
+  - serial data stream
+  - divided clock of oscillator 0
+  - divided clock of oscillator 1
+  - divided clock of oscillator 2
+  picture: ''
+  tag: oscillator, test
+  title: TROS
+project:
+  source_files:
+  - ros_nand4.v
+  - ros_nand4_cap.v
+  - ros_einv_sub.v
+  - fmeasurment.v
+  - tt_um_gfg_development_tros.v
+  tiles: 1x1
+  top_module: tt_um_gfg_development_tros_dup
+  wokwi_id: 0
+yaml_version: 4

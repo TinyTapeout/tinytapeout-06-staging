@@ -1,0 +1,55 @@
+documentation:
+  author: Johannes Leugering
+  bidirectional:
+  - data bit 0
+  - data bit 1
+  - data bit 2
+  - data bit 3
+  - data bit 4
+  - data bit 5
+  - data bit 6
+  - data bit 7 | good/bad token flag (0 = good, 1 = bad)
+  clock_hz: 10000000
+  description: Implementation of a processor that uses Tick Tock Tokens for event-based
+    computation.
+  discord: jleugeri
+  doc_link: README.md
+  external_hw: arduino to generate I/O
+  how_it_works: "Each TickTockToken (ttt) is indicated by two messages, a start and\
+    \ an end event. A ttt-Processor uses these tokens to perform event-based computations\
+    \ in a fashion inspired by Time Petri Nets. \n"
+  how_to_test: 'If I didn''t get lazy half-way though, the test-script provided in
+    the repo should run a test model successfully, and the documentation should provide
+    a more through explanation.
+
+    '
+  inputs:
+  - instruction bit 0
+  - instruction bit 1
+  - instruction bit 2
+  - instruction bit 3
+  - (reserved)
+  - (reserved)
+  - (reserved)
+  - (reserved)
+  language: SystemVerilog
+  outputs:
+  - data bit 0 | token start flag
+  - data bit 1 | token stop flag
+  - data bit 2
+  - data bit 3
+  - data bit 4
+  - data bit 5
+  - data bit 6
+  - data bit 7
+  picture: event_processor.png
+  tag: tick tock token, event processor, Petri Net
+  title: TickTockTokens
+project:
+  source_files:
+  - tt_um_jleugeri_ticktocktokens.sv
+  - ttt_processor.sv
+  tiles: 1x1
+  top_module: tt_um_jleugeri_ticktocktokens_dup
+  wokwi_id: 0
+yaml_version: 4

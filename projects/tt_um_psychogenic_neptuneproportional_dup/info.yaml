@@ -1,0 +1,59 @@
+documentation:
+  author: Pat Deegan
+  bidirectional:
+  - raw input pulse count bit 0
+  - raw input pulse count bit 1
+  - raw input pulse count bit 2
+  - raw input pulse count bit 3
+  - raw input pulse count bit 4
+  - raw input pulse count bit 5
+  - raw input pulse count bit 6
+  - raw input pulse count bit 7
+  clock_hz: 1000
+  description: 'It''s a guitar tuner!  and so much more... '
+  discord: psychogenictech
+  doc_link: https://inductive-kickback.com/projects/neptune/
+  external_hw: 'Digital input required: may need massaging if looking at actual guitar
+    signals... see documentation'
+  how_it_works: "The rising edge of the input is counted over a set period of time\n\
+    and attempt is made to tell if this count is at, or near, a \nfrequency of interest--namely\
+    \ the E,A,D,G,B notes of guitar\nstandard tuning.\nIn this version, the system\
+    \ should be capable of detecting:\nE2,A2,A3,B3,D3,E3,G3,D4,E4 and G4 so from about\
+    \ ~80 to 400 Hz.\nClock config settings (using 3 input bits)\n 0: 1kHz\n 1: 2kHz\n\
+    \ 2: 4kHz\n 3: 3.277kHz \n 4: 10 kHz\n 5: 32.768kHz\n 6: 40kHz\n 7: 60kHz\n"
+  how_to_test: "Set the clocking bits to 0b000 for a 1kHz clock input (input bits\n\
+    2,3 and 4).\nInput pulses are fed to input bit 5.  The raw count of pulses over\n\
+    the sampling period (hard-coded here to 0.5 seconds) is output on \nthe bidir\
+    \ pins.  The output is setup to drive a dual 7-segment display, or a single 7-segment\
+    \ (by using the output_display bits on\nthe input).  In single mode, the 7-seg\
+    \ dot marks exact match.\n"
+  inputs:
+  - n/a
+  - n/a
+  - clk config 0
+  - clk config 1
+  - clk config 2
+  - input pulse
+  - output display single enable (LOW == dual)
+  - output display select
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot or select (for dual)
+  picture: img/neptune.png
+  tag: timer, test
+  title: Neptune guitar tuner (proportional window, version b, debug output on bidir
+    pins, larger set of frequencies)
+project:
+  source_files:
+  - neptune_tinytapeout_propwindow.v
+  tiles: 1x1
+  top_module: tt_um_psychogenic_neptuneproportional_dup
+  wokwi_id: 0
+yaml_version: 4

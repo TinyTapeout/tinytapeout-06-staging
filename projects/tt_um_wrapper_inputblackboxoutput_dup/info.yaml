@@ -1,0 +1,62 @@
+documentation:
+  author: Rutuparn Pawar
+  bidirectional:
+  - we
+  - halt
+  - none
+  - addr[4]
+  - addr[3]
+  - addr[2]
+  - addr[1]
+  - addr[0]
+  clock_hz: 0
+  description: An 8 bit turing complete computer
+  discord: blackbox0x0000
+  doc_link: https://github.com/InputBlackBoxOutput/Byte-Computer
+  external_hw: ''
+  how_it_works: "Byte computer is an in-order, no register file, no-cache, non-pipelined\
+    \ and no branch predictor implementation of an 8-bit Turing complete computer\
+    \ thus making it extremely simple and small enough for TinyTapeout.\nThe computer\
+    \ fetches instruction at the address in the program counter which has an initial\
+    \ value of zero. \nThe instruction is decoded and then executed followed by setting\
+    \ appropriate condition flags. \nThe program counter is incremented and the fetch\
+    \ -> decode -> execute process repeats until a halt instruction is fetched and\
+    \ executed. \nSee README in project repository for waveform illustrating the fetch\
+    \ -> decode -> execute process.\n"
+  how_to_test: "External memory and memory control logic is required to test the design\
+    \ which can be implemented using a microcontroller. \nThe memory should be preloaded\
+    \ with a program created using the available instructions and the data processed\
+    \ by the program.\nThe expected memory behaviour is to write data to memory at\
+    \ address indicated by the addr signal when we signal is high and vice versa.\n\
+    The halt signal indicates that the computer has encountered and ececuted a halt\
+    \ instruction.\n"
+  inputs:
+  - data[7]
+  - data[6]
+  - data[5]
+  - data[4]
+  - data[3]
+  - data[2]
+  - data[1]
+  - data[0]
+  language: Verilog
+  outputs:
+  - data[7]
+  - data[6]
+  - data[5]
+  - data[4]
+  - data[3]
+  - data[2]
+  - data[1]
+  - data[0]
+  picture: ''
+  tag: microprocessor
+  title: Byte Computer
+project:
+  source_files:
+  - rtl/computer.v
+  - rtl/tt_wrapper.v
+  tiles: 1x1
+  top_module: tt_um_wrapper_inputblackboxoutput_dup
+  wokwi_id: 0
+yaml_version: 4

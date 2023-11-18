@@ -1,0 +1,53 @@
+documentation:
+  author: Sylvain Munaut
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Loopback test module
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Input 0 goes to output 0 through 6.
+
+    Output 7 is input4 & input5 & input6 & input7
+
+    '
+  how_to_test: 'Toggle input 0, measure the time for output 0 to change.
+
+    '
+  inputs:
+  - in0
+  - none
+  - none
+  - none
+  - in4
+  - in5
+  - in6
+  - in7
+  language: Verilog
+  outputs:
+  - mirrors in0
+  - mirrors in0
+  - mirrors in0
+  - mirrors in0
+  - mirrors in0
+  - mirrors in0
+  - mirrors in0
+  - the value of in4 & in5 & in6 & in7
+  picture: ''
+  tag: test
+  title: TinyTapeout 05 Loopback Test Module
+project:
+  source_files:
+  - tt_um_loopback.v
+  tiles: 1x1
+  top_module: tt_um_loopback_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,57 @@
+documentation:
+  author: Himanshu Yadav
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: ComputeUnit implementation
+  discord: himanshu2841
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'The project has two compute unit which perform some ALU operations
+    based on input instructions and the final output
+
+    is xor of compute unit output.
+
+    '
+  how_to_test: "Reset needs to be 0 to make design go to reset mode and then set reset\
+    \ to 1 and ena to 1 to shift the design to \nfunctional mode. I tested my design\
+    \ on EDA playground by creating testbench there. Testbench and design files are\n\
+    there in test/ directory.\n"
+  inputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: alu,verilog,testbench
+  title: Dual Compute Unit
+project:
+  source_files:
+  - computeUnit_0.v
+  - computeUnit_1.v
+  - tt_um_chiptop.v
+  tiles: 1x2
+  top_module: tt_um_himanshu5_prog_chipTop_dup
+  wokwi_id: 0
+yaml_version: 4

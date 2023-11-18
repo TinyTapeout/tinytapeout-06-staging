@@ -1,0 +1,50 @@
+documentation:
+  author: Dave Cox
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: A series of NOT gates with whip outs to measure self oscillation, and
+    a clock switch
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: There are two functional blocks - a ring oscillator with multiple
+    taps, and a glitchless clock switch.
+  how_to_test: To test the oscillator - Input 0 is input to first inverter in the
+    oscillator. One of the inverted outputs either 0 (slowest), 1 (mid), or 2 (fastest)
+    should be connected to input 0. To test the clock switch - input 1 selects between
+    clock0 (on input 2) and clock 1 (on input 3). Selected CLK appears on OUT3
+  inputs:
+  - 0 Osc In
+  - 1 ClkSel
+  - 2 CLK0 in
+  - 3 Clk1 in
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - 0 OSC OutSlow/segment a
+  - 1 OSC OutMid/segment b
+  - 2 OSC OutFast/segment c
+  - 3 ClkOut/segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: ''
+  title: Ring Oscillator and Clock Source Switch
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380408455148316673_dup
+  wokwi_id: 0
+yaml_version: 4

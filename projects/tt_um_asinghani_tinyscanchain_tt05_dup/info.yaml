@@ -1,0 +1,59 @@
+documentation:
+  author: Anish Singhani
+  bidirectional:
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  clock_hz: 1000
+  description: Test design for tinyscanchain, based on seven segment seconds design
+  discord: anish256
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'tinyscanchain is a scan-chain implementation in less than 80 lines
+    of Python. This is a test design based on the use of seven segment seconds.
+
+    '
+  how_to_test: 'After reset, the counter should increase by one every second with
+    a 1kHz input clock.
+
+    Experiment by changing the inputs to change the counting speed.
+
+    Use the scan chain to test the internal state of the design.
+
+    '
+  inputs:
+  - enable
+  - scan chain input
+  - scan chain enable
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  language: SystemVerilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - scan chain output
+  picture: ''
+  tag: timer, test
+  title: tinyscanchain Test Design
+project:
+  source_files:
+  - tt_um_asinghani_tinyscanchain_tt05.sv
+  - seven_segment_seconds_out.sv
+  tiles: 1x1
+  top_module: tt_um_asinghani_tinyscanchain_tt05_dup
+  wokwi_id: 0
+yaml_version: 4

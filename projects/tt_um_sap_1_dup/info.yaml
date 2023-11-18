@@ -1,0 +1,78 @@
+documentation:
+  author: Brandon Cruz
+  bidirectional:
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  clock_hz: 10000000
+  description: Simple as Possible  computer into ASIC
+  discord: Brandonz88
+  doc_link: ''
+  external_hw: Oscilloscope
+  how_it_works: "Originally, Malvino and Brown presented the SAP-1 architecture in\
+    \ a book called Digital Computer Electronics. \nThe design gained massive popularity\
+    \ when it was build as a bread board computer by Ben Eater on a series of YouTube\
+    \ videos. \nThe architecture contains various modules, including\n- Clock \n-\
+    \ Program Counter\n- Register A\n- Register B\n- Adder\n- Memory\n- Instruction\
+    \ Register\n- Bus\n- Controller\nThis design doesn't have inputs, it is dependent\
+    \ only on the clock that coordinates sequence of the computer's operation. \n\
+    Its operation consists on the communication that that bus provides between modules;\
+    \ the signal load dumps information into a module\nand the enable signal allows\
+    \ the bus to receive a signal. The bus is 8-bit width since it is an 8 bit computer,\
+    \ and the registers\nare also 8-bit registers. \nThe computer can only perform\
+    \ addition, whether it is positive numbers or negative numbers (substraction).\
+    \ \nThe signals information is stored within the memory module. There bus operations\
+    \ are coordinated with a series of multiplexers and      \nthe instruction execution\
+    \ set gives the SAP-1 a total of six stages from 0 to 5, repeating all over again.\
+    \ \nThe more important module      is the controller. It controlls the assertion\
+    \ execution according to the stimuli from the stages.\nThe stages 3 to 5 five\
+    \ depend on the instructions of the operation codes. \n"
+  how_to_test: "Design Output Reading Section\nThe design is engineered to read the\
+    \ output signal generated from the bus, which contains the information \nof the\
+    \ add and subtract operations executed by the design. Currently, the only method\
+    \ to read the signals \nis through an oscilloscope. However, a significant enhancement\
+    \ would be the implementation of a state machine \ncontrolling a 3 7-segment display\
+    \ to show the numbers on the 8-bit bus (up to 255).\n"
+  inputs:
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  - n/a
+  language: Verilog
+  outputs:
+  - bus[0]
+  - bus[1]
+  - bus[2]
+  - bus[3]
+  - bus[4]
+  - bus[5]
+  - bus[6]
+  - bus[7]
+  picture: ''
+  tag: sap_1, test
+  title: SAP-1 Computer
+project:
+  source_files:
+  - tt_um_sap_1.v
+  - sap_1.v
+  - clock.v
+  - pc.v
+  - memory.v
+  - reg_a.v
+  - reg_b.v
+  - adder.v
+  - ir.v
+  - controller.v
+  tiles: 1x1
+  top_module: tt_um_sap_1_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,67 @@
+documentation:
+  author: Aravind Ramamoorthy
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: a single neuron in a Binarized Neural Network (BNN), performing binary
+    multiplication with XNOR, accumulation, and sign activation.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'This model simulates the behavior of a single neuron within a Binarized
+    Neural Network (BNN)
+
+
+    The XNOR operation is used to perform binary multiplication.
+
+    A 32-bit signal used for accumulating the results of multiple XNOR operations,
+    simulating the weighted sum of inputs.
+
+
+    "Sign activation function" applies to the accumulated result.
+
+    It maps the accumulated value to either +1 or -1 based on the sign.
+
+    '
+  how_to_test: 'Reset the circuit to set to 0.
+
+    The constant Input and weight is provided with enable signal to begin XNOR multiplication
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: '![Binary Neural Network](BinaryNetwork.png)'
+  tag: neuron, BNN Neuron
+  title: Binary Neural Network (Verilog Demo)
+project:
+  source_files:
+  - tt_um_BNNNeuron.v
+  - BNNNeuron.v
+  tiles: 1x1
+  top_module: tt_um_BNNNeuron_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,69 @@
+documentation:
+  author: Chinmay Patil
+  bidirectional:
+  - sck_i
+  - sdi_i
+  - sdo_o
+  - cs_ni
+  - i2s_sck_o
+  - i2s_ws_o
+  - i2s_sd_o
+  - prbs_15
+  clock_hz: 256000
+  description: Plucked string sound synthesizer
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "This is simplified implementation of Karplus-Strong (KS) string synthesis\
+    \ based on papers, [Digital Synthesis of Plucked-String and Drum Timbres](https://doi.org/10.2307/3680062)\
+    \ and [Extensions of the Karplus-Strong Plucked-String Algorithm](https://doi.org/10.2307/3680063).\
+    \ \n\nA register map controls and configures the KS synthesis module. This register\
+    \ map is accessed through a SPI interface. Synthesized sound samples can be accessed\
+    \ through the I2S transmitter interface.\n\n### SPI Frame\nSPI Mode: CPOL = 0,\
+    \ CPHA = 1\n\nThe 16-bit SPI frame is defined as,\n\n|\tRead=1/Write=0\t|\tAddress[6:0]\t\
+    |\tData[7:0]\t|\n| --- | --- | --- |\n\n### Register Map\nThe Register Map has\
+    \ 16 Registers of 8-bits each.\n\nComplete register map is described in the repository\
+    \ at [https://github.com/pyamnihc/tt04-um-ks-pyamnihc](https://github.com/pyamnihc/tt04-um-ks-pyamnihc).\n\
+    \n### I2S Transmitter\nThe 8-bit signed sound samples can be read out at `f_sck\
+    \ = 256 kHz` through this interface.\n"
+  how_to_test: 'Connect a clock with frequency `f_clk = 256 kHz` and apply a reset
+    cycle to initialize the design, this sets the audio sample rate at `fs = 16 kHz`.
+    Use the spi register map or the ui_in to futher configure the design. The synthesized
+    samples are sent continuously on the I2S transmitter interface.
+
+    '
+  inputs:
+  - ~rst_n_prbs_15, ~rst_n_prbs_7
+  - load_prbs_15, load_prbs_7
+  - freeze_prbs_15
+  - freeze_prbs_7
+  - i2s_noise_sel
+  - ~rst_n_ks_string
+  - pluck
+  - NOT CONNECTED
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: filter, music
+  title: Karplus-Strong String Synthesis
+project:
+  source_files:
+  - tt_um_ks_pyamnihc.v
+  - spi_slave_mem_interface.v
+  - register_map.v
+  - prbs15.v
+  - prbs7.v
+  - i2s_tx.v
+  - ks_string.v
+  tiles: 2x2
+  top_module: tt_um_ks_pyamnihc_dup
+  wokwi_id: 0
+yaml_version: 4

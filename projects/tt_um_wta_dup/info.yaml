@@ -1,0 +1,54 @@
+documentation:
+  author: Nicholas Kuipers
+  bidirectional:
+  - spike bit 0
+  - unspecified
+  - unspecified
+  - unspecified
+  - unspecified
+  - unspecified
+  - unspecified
+  - unspecified
+  clock_hz: 10000000
+  description: Implement a WTA network
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Take in an 8-bit current and parse two sets of 4 bits. Only output
+
+    the 4 bits of highest value (if equal, preference to MSB)
+
+    '
+  how_to_test: 'After reset, result values and comparator are reset to 0
+
+    '
+  inputs:
+  - current bit 11
+  - current bit 12
+  - current bit 13
+  - current bit 14
+  - current bit 15
+  - current bit 16
+  - current bit 17
+  - current bit 18
+  language: Verilog
+  outputs:
+  - membrane potential bit a
+  - membrane potential bit b
+  - membrane potential bit c
+  - membrane potential bit d
+  - membrane potential bit e
+  - membrane potential bit f
+  - membrane potential bit g
+  - membrane potential bit h
+  picture: ''
+  tag: neuron, test
+  title: Winner-Take-All Network (Verilog Demo)
+project:
+  source_files:
+  - tt_um_wta.v
+  - wta.v
+  tiles: 1x1
+  top_module: tt_um_wta_dup
+  wokwi_id: 0
+yaml_version: 4

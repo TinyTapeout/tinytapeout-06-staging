@@ -1,0 +1,50 @@
+documentation:
+  author: Axel Andersson & Per Andersson
+  bidirectional:
+  - They do nothing.
+  clock_hz: 10000000
+  description: Count up to 15 lions, moving through a tunnel between a cage and an
+    enclosure.
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Two sensors are set in the tunnel. The sensor closest to the cage\
+    \ is G1,\nthe other G2. Only one lion can walk through the tunnel at a time. A\
+    \ lion \nis allowed to reverse in the tunnel. \n\nAs the lion starts walking out,\
+    \ (G1, G2) = (1, 0), the counter increments by 1.\nOne of two scenarios then occurs:\
+    \ either the sensors read (G1, G2) = (0, 0) before it \nreads (G1, G2) = (0, 1).\
+    \ In that case, the counter will decrement as the lion must have gone \nback into\
+    \ the cage. Otherwise, the sensors will read (G1, G2) = (0, 1) before it reads\
+    \ \n(G1, G2) = (0, 0), thereby letting us know that it has passed (G1, G2) = (1,\
+    \ 1) as well. The \ncounter will not change in this case.\n\nIf we read (G1, G2)\
+    \ = (1, 1) before reading (G1, G2) = (1, 0), we know a lion is moving from the\
+    \ \nenclosure to the cage. We then repeat the above two cases. This allows us\
+    \ to create a two \nstate graph of the problem, transitioning from S0 to S1 on\
+    \ either (G1, G2) = (1, 0) or\n(G1, G2) = (1, 1) and returning back on (G1, G2)\
+    \ = (0, 1) or (G1, G2) = (0, 0), incrementing \nthe counter if S0->S1 on (G1,\
+    \ G2) = (1, 0) and decrementing the counter if S1->S0 on \n(G1, G2) = (0, 0).\n"
+  how_to_test: "After reset, the counter should increase by 1 if a lion moves from\
+    \ the cage to the enclosure, and the opposite if \nvice versa.\n"
+  inputs:
+  - G1, first sensor in tunnel
+  - G2, second sensor in tunnnel
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  picture: ''
+  tag: timer, test
+  title: Lion cage
+project:
+  source_files:
+  - tt_um_muncherkin_lioncage.v
+  - decoder.v
+  tiles: 1x1
+  top_module: tt_um_muncherkin_lioncage_dup
+  wokwi_id: 0
+yaml_version: 4

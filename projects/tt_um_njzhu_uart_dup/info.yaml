@@ -1,0 +1,58 @@
+documentation:
+  author: Nathan Zhu
+  bidirectional:
+  - finished_read - finished reception / dataIn[0]
+  - dataIn[1]
+  - dataIn[2]
+  - dataIn[3]
+  - dataIn[4]
+  - dataIn[5]
+  - dataIn[6]
+  - dataIn[7]
+  clock_hz: 0
+  description: UART Transceiver with tx and rx functions at 9600 baud rate
+  discord: nahte#9080
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "Given paramaters of the clock frequency and the desired baud rate,\n\
+    we can calculate the number of ticks of the clock to correspond to a tick\nat\
+    \ the desired baud rate. Then we can send the start bit, 8 data bits, and \na\
+    \ stop bit. Our design uses oversampling to get the value at the middle of \n\
+    the pulse, and then returns our data bit with a read_done signal. For the transmitter,\
+    \ \nwe take a data byte of input and, using the pulse width calculated earlier,\
+    \ \nsend a proper UART sequence with the correct timing.\n"
+  how_to_test: "After reset, the receiver will wait for the start bit, and then 8\
+    \ data bits, \nand then a stop bit. After reset, we can set the 8 data bits and\
+    \ a data_ready bit\nand the resulting uart transmission sequence will appear on\
+    \ the tx output signal.\n"
+  inputs:
+  - rx bit to signal the bits we receive, dataReady highlighting data is ready for
+    tx
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - bit to test if we want tx or rx
+  language: SystemVerilog
+  outputs:
+  - segment a / dataOut[0] / tx for uart packet bits
+  - segment b / dataOut[1]
+  - segment c / dataOut[2]
+  - segment d / dataOut[3]
+  - segment e / dataOut[4]
+  - segment f / dataOut[5]
+  - segment g / dataOut[6]
+  - segment h / dataOut[7]
+  picture: ''
+  tag: uart
+  title: UART Transceiver
+project:
+  source_files:
+  - uart.sv
+  - tt_um_njzhu_uart.sv
+  tiles: 1x1
+  top_module: tt_um_njzhu_uart_dup
+  wokwi_id: 0
+yaml_version: 4

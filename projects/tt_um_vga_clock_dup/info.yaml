@@ -1,0 +1,63 @@
+documentation:
+  author: Matt Venn
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 31500000
+  description: Shows the time on a VGA screen
+  discord: mattvenn#1907
+  doc_link: ''
+  external_hw: R2R dac for the VGA signals
+  how_it_works: 'Races the beam! Font is pre generated and loaded into registers.
+    6 bit colour keeps register count low.
+
+    '
+  how_to_test: 'Hook up a VGA monitor to the outputs and provide a clock at 31.5 MHz.
+    Connect the 6 bit colour output up with resistors to make
+
+    a R2R DAC. See the circuit here: https://github.com/mattvenn/6bit-pmod-vga
+
+    '
+  inputs:
+  - clock
+  - reset
+  - adjust hours
+  - adjust minutes
+  - adjust seconds
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - hsync
+  - vsync
+  - r0
+  - r1
+  - g0
+  - g1
+  - b0
+  - b1
+  picture: vga_clock.jpg
+  tag: clock
+  title: VGA clock
+project:
+  source_files:
+  - button_pulse.v
+  - cells.v
+  - digit.v
+  - fontROM.v
+  - tt_vga_clock.v
+  - vga_clock.v
+  - VgaSyncGen.v
+  tiles: 1x1
+  top_module: tt_um_vga_clock_dup
+  wokwi_id: 0
+yaml_version: 4

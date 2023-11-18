@@ -1,0 +1,80 @@
+documentation:
+  author: "Vytautas \u0160altenis"
+  bidirectional:
+  - address0
+  - address1
+  - address2
+  - address3
+  - address4
+  - orbit/max select
+  - start compute
+  - write enable or compute busy indicator
+  clock_hz: 0
+  description: 'Runs a Collatz sequence calculation for a given number, outputs the
+    number
+
+    of steps it took to reach 1 (a.k.a. orbit length) and the upper 16 bits of
+
+    the highest number of the sequence.
+
+    '
+  discord: vytas.rtfb
+  doc_link: https://github.com/rtfb/tt05-collatz/blob/main/README.md
+  external_hw: ''
+  how_it_works: "The module takes a (large) integer number `N` as an input and computes\
+    \ the\n[Collatz sequence][1] until it reaches 1. When it does, it allows reading\n\
+    back two numbers:\n\n1) The orbit length (i.e. the number of steps it took to\
+    \ reach 1)\n2) The highest recorded value of the upper 16 bits of the 144-bit\
+    \ internal\n   iterator\n\nThe latter number is an indicator for good candidates\
+    \ for computing [path\nrecords][2]. The non-zero upper bits indicate that the\
+    \ highest iterator\nvalue `Mx(N)` is in the range of the previous path records\
+    \ and should be\nrecomputed in the full offline. (Holding on to the entire 144\
+    \ bits of\n`Mx(N)` number would be more obvious, but this almost doubles the footprint\n\
+    of the design, hence, this optimisation).\n\n[1]: https://en.wikipedia.org/wiki/Collatz_conjecture\n\
+    [2]: http://www.ericr.nl/wondrous/pathrecs.html\n"
+  how_to_test: "The module can be in 2 states: IO and COMPUTE. After reset, the chip\
+    \ will\nbe in IO mode. Since the input is intended to be much larger that the\n\
+    available pins, the input number is uploaded one byte at a time,\nincreasing the\
+    \ address of where in the internal 144-bit-wide register that\nbyte should be\
+    \ stored.\n\nSame for reading the output, except that the output numbers are limited\
+    \ to\n16-bits each, so it takes much fewer operations to read them.\n\nThe full\
+    \ loop of computations works like this:\n\n1) Set input (see below)\n2) Pull `start\
+    \ compute` pin to high. The chip will start computations and\n   will pull `compute\
+    \ busy indicator` pin to high\n3) Keep reading `compute busy indicator` pin until\
+    \ it gets low again\n4) Read the output (see below)\n\nWriting input:\n\n1) Set\
+    \ `write enable` pin to low\n2) Wait at least one cycle\n3) Expose your input\
+    \ byte to `input0-7`\n4) Expose the target address for that byte to `address0-4`\n\
+    5) Wait at least one cycle\n6) Set `write enable` pin to high\n\nReading output:\n\
+    \n1) Set `orbit/max select` pin to low\n2) Set `address0-4` to 0\n3) Read low\
+    \ byte of orbit length from `output0-7`\n4) Set `address0-4` to 1\n5) Read high\
+    \ byte of orbit length from `output0-7`\n6) Set `orbit/max select` pin to high\n\
+    7) Repeat steps 2-5 to read the upper `Mx(N)` bits\n"
+  inputs:
+  - input0
+  - input1
+  - input2
+  - input3
+  - input4
+  - input5
+  - input6
+  - input7
+  language: Verilog
+  outputs:
+  - output0
+  - output1
+  - output2
+  - output3
+  - output4
+  - output5
+  - output6
+  - output7
+  picture: ''
+  tag: collatz, brute-force, accelerator
+  title: Collatz conjecture brute-forcer
+project:
+  source_files:
+  - tt_um_rtfb_collatz.v
+  tiles: 1x2
+  top_module: tt_um_rtfb_collatz_dup
+  wokwi_id: 0
+yaml_version: 4

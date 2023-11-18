@@ -1,0 +1,61 @@
+documentation:
+  author: Matheus
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 27000000
+  description: Chip Inventor
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'There are two diagrams created by the Chip Inventor platform, whereas
+    by using blocks, you can create your own semiconductor design.
+
+    The piano tune is one diagram. A song-throwing buzzer can be configured with one
+    button and a buzzer.
+
+    A 6-bit counter diagram is the other.
+
+    Chip Inventor website: https://chipinventor.com
+
+    '
+  how_to_test: 'Using a buzzer, it''s possible to listen to a music note.
+
+    Connecting 4 LEDs in pull_up makes it possible to see the binary value.
+
+    '
+  inputs:
+  - btn1
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - buzzer
+  - l1
+  - l2
+  - l3
+  - l4
+  - led0
+  - led1
+  - none
+  picture: ''
+  tag: ''
+  title: 6 bit Counter and Piano Music created by Chip Inventor
+project:
+  source_files:
+  - tt_um_chip_inventor_music__6_bit_count.v
+  tiles: 1x1
+  top_module: tt_um_chip_inventor_music__6_bit_count_dup
+  wokwi_id: 0
+yaml_version: 4

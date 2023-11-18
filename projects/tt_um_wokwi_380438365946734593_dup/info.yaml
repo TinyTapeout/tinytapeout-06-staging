@@ -1,0 +1,42 @@
+documentation:
+  author: Rodolfo Sanchez Fraga
+  bidirectional:
+  - not used
+  clock_hz: 0
+  description: UART test
+  discord: rodolfosanchez_83995
+  doc_link: ''
+  external_hw: UART receiver
+  how_it_works: 'This project is an edited version of the example CUSTOMISABLE DESIGN
+    - UART from digital design guide. Implements a a UART transmitter using registers
+    made from D-flip flops and multiplexers.
+
+    The characters QSM are sent continuously.
+
+    '
+  how_to_test: 'To begin transmission:
+
+    1. Connect CLK signal
+
+    2. Set IN6 ("Load") to OFF
+
+    3. Set IN7 ("Output Enable") to ON
+
+    4. Set IN6 ("Load") to ON
+
+    '
+  inputs:
+  - IN6 - Load | TX
+  - IN7 - Output enable
+  language: Wokwi
+  outputs:
+  - OUT0 - Output enable indicator
+  - OUT1 - Load | TX indicator
+  picture: ''
+  tag: UART
+  title: UART test
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380438365946734593_dup
+  wokwi_id: 0
+yaml_version: 4

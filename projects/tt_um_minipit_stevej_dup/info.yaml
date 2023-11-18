@@ -1,0 +1,62 @@
+documentation:
+  author: Steve Jenson
+  bidirectional:
+  - /we write enable for config
+  - set config address 0
+  - set config address 1
+  - start the timer
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: When the given 16-bit counter reaches 0 an interrupt pin is asserted
+    for one clock cycle.
+  discord: shorts_weather
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'A minimal clone of a programmable interrupt timer. Inspried by the
+    Intel 8253 but without most of the features or headaches. See the `README.md`
+    for detailed documentation.
+
+    '
+  how_to_test: 'set input pins to 0x00. pull write enable high, address line 0 low,
+    address line 0 low.
+
+    set input pins to 0x10, pull write enable high, address line 0 low, address line
+    1 high.
+
+    pull bidi pin 3 (timer_start) high, count 10 clock cycles and see if the interrupt
+    pin has pulled high for 1 cycle
+
+    '
+  inputs:
+  - config[0] - use a clock divider
+  - config[1] - repeat the interrupt?
+  - config[2]
+  - config[3]
+  - config[4]
+  - config[5]
+  - config[6]
+  - config[7]
+  language: Verilog
+  outputs:
+  - divider on?
+  - counter set?
+  - pit active?
+  - pit in reset?
+  - pit currently interrupting?
+  - f
+  - g
+  - h
+  picture: ''
+  tag: pit
+  title: Miniature Programmable Interrupt Timer
+project:
+  source_files:
+  - minipit.v
+  - tt_um_minipit_stevej.v
+  tiles: 1x1
+  top_module: tt_um_minipit_stevej_dup
+  wokwi_id: 0
+yaml_version: 4

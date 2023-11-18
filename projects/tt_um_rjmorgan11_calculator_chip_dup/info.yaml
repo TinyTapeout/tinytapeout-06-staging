@@ -1,0 +1,70 @@
+documentation:
+  author: Rylan Morgan
+  bidirectional:
+  - OpIn [3:0] what op to run
+  - Enter      enter command
+  - Flags [2:0] overflow, negative, and zero flags
+  clock_hz: 0
+  description: calculator
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Basic ALU. Use the input pins to specify an 8 bit number and output
+    pins to view result. IO pin 0 is the enter pin, assert high to enter command/value.
+    IO pins 4-1 are used to select the command for the ALU. IO pins 7-5 are for flags.
+
+    Ops:
+
+    0x0: add
+
+    0x1: subtract
+
+    0x2: bitwise or
+
+    0x3: bitwise and
+
+    0x4: bitwise xor
+
+    0x5: left shift by 1
+
+    0x6: right shift by 1 (logic)
+
+    0x7: right shift by 1 (arithmetic)
+
+    0x8: 2s compliment negate
+
+    0x9: bitwise invert
+
+    0xA: reverse bitpatern
+
+    0xB: unused
+
+    0xC: unused
+
+    0xD: unsigned input < output
+
+    0xE: unsigned input > output
+
+    0xF: input == output
+
+    '
+  how_to_test: 'enter a bunch of numbers and ops, should work great
+
+    '
+  inputs:
+  - NumIn [7:0] number in
+  - Reset
+  - Clock
+  language: SystemVerilog
+  outputs:
+  - NumOut [7:0] output
+  picture: ''
+  tag: ''
+  title: Calculator chip
+project:
+  source_files:
+  - calc.sv
+  tiles: 1x1
+  top_module: tt_um_rjmorgan11_calculator_chip_dup
+  wokwi_id: 0
+yaml_version: 4

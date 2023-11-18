@@ -1,0 +1,30 @@
+documentation:
+  author: Rodolfo Sanchez
+  bidirectional:
+  - not used
+  clock_hz: 0
+  description: Simple test with of a memory cell
+  discord: rodolfosanchez_83995
+  doc_link: ''
+  external_hw: None
+  how_it_works: 'Simple test wiht
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - IN0 to IN3  - input data
+  - IN4, IN5    - address selection
+  - IN6         - write | read
+  language: Wokwi
+  outputs:
+  - OUT0 - OUT3 - output data
+  picture: ''
+  tag: RAM, cell
+  title: RAM cell test
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_378231665807713281_dup
+  wokwi_id: 0
+yaml_version: 4

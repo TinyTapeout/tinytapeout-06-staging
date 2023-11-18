@@ -1,0 +1,100 @@
+documentation:
+  author: Ryota Suzuki
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 50000000
+  description: Small wavetable/PSG type sound generator with I2S output
+  discord: ja1tye
+  doc_link: ''
+  external_hw: I2S DAC is required (I tested this design with FPGA and PCM5102A DAC)
+  how_it_works: 'This project is Small wave table/PSG type sound generator with I2S
+    output.
+
+    Major features are:
+
+    - 4 channel sound generator
+
+    - 4-bit x 32depth wave table (can be uses as 2 of 16depth wave table)
+
+    - 8 selectable waveform (3x pulse,1x noise, 4x wave table)
+
+    - 8-bit volume(only for PSG mode, wave table mode is 4-step volume)
+
+    - 16-bit frequency
+
+    - Sampling Frequency is 48828.125Hz (at 50MHz clock)
+
+    - I2S output (16-bit mono)
+
+    - SPI control interface
+
+
+    You can control this sound generator by SPI interface.
+
+    SPI mode is mode 0 (CPOL=0, CPHA=0), and transaction length is 24-bit.
+
+    first 8-bit is register address, and next 16-bit is data. Data is MSB first.
+
+
+    | Addr | Description | Width |
+
+    | ---- | ---- | ---- |
+
+    | 0x00-0x03 | Frequency[0]-[3] | 16bit |
+
+    | 0x04-0x07 | Volume[0]-[3] | 8bit (lower 8bits are valid)|
+
+    | 0x08-0x0b | Waveform Select[0]-[3] | 3bit (lower 3bits are valid)|
+
+    | 0x20-0x3f | WaveTable[0]-[31] | 4bit (lower 4bits are valid)|
+
+    '
+  how_to_test: 'Connect I2S output to I2S DAC, and control this sound generator by
+    SPI interface.
+
+    SPI input is connected to RP2040''s SPI1 on TT05 breakout board.
+
+    '
+  inputs:
+  - SPI CS Input
+  - SPI CLK Input
+  - SPI MOSI Input
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - I2S Bit Clock
+  - I2S Word Select
+  - I2S Data
+  - none
+  - none
+  - none
+  - none
+  - none
+  picture: ''
+  tag: sound,SPI,I2S
+  title: Wavetable Sound Generator
+project:
+  source_files:
+  - top.v
+  - i2s_out.v
+  - master_counter.v
+  - sample_counter.v
+  - spi_decoder.v
+  - spi_slave.v
+  - tone_engine.v
+  - wave_lut.v
+  tiles: 1x2
+  top_module: tt_um_ja1tye_sound_generator_dup
+  wokwi_id: 0
+yaml_version: 4

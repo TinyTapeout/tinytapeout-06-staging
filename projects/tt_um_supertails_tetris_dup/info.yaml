@@ -1,0 +1,55 @@
+documentation:
+  author: Carson Swoveland
+  bidirectional:
+  - A0/D0
+  - A1/D1
+  - A2/D2
+  - A3
+  - A4
+  - A5
+  - none
+  - none
+  clock_hz: 6250000
+  description: Implements the second-most-popular game of all time in hardware
+  discord: _salix
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Explain how your project works
+
+    '
+  how_to_test: 'Explain how to test your project
+
+    '
+  inputs:
+  - Move Left
+  - Move Down
+  - Move Left
+  - Spin Counterclockwise
+  - Spin Clockwise
+  - none
+  - none
+  - none
+  language: SystemVerilog
+  outputs:
+  - VGA HSync
+  - VGA VSync
+  - VGA Red
+  - VGA Green
+  - VGA Blue
+  - Memory Start
+  - Memory Continue
+  - Memory Write Enable
+  picture: ''
+  tag: ''
+  title: Tetris
+project:
+  source_files:
+  - main.sv
+  - collision.sv
+  - buttons.sv
+  - puyo.sv
+  - defs.svh
+  tiles: 1x1
+  top_module: tt_um_supertails_tetris_dup
+  wokwi_id: 0
+yaml_version: 4

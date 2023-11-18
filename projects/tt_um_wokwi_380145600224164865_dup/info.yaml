@@ -1,0 +1,46 @@
+documentation:
+  author: Shravyasai Koushik
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Converts binary input up until 9 and some alphabets into 7 segment
+    display
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Based on a simple logic circuit consisting of OR and AND gates.
+
+    '
+  how_to_test: 'Utilise first 4 switches as binary input from 0-15.
+
+    '
+  inputs:
+  - red switch board
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - 7 segment display
+  - none
+  - none
+  - none
+  picture: ''
+  tag: ''
+  title: 7 segment display
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380145600224164865_dup
+  wokwi_id: 0
+yaml_version: 4

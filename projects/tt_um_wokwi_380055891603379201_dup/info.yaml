@@ -1,0 +1,52 @@
+documentation:
+  author: "Jorge G\xF3mez y Felipe G\xF3mez"
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 1
+  description: Hexadecimal countdown from F to 0
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Statemachine that on each clock pulse subttracts one on the 7 segment
+    display. Starting in F and finishing on 0.
+
+    '
+  how_to_test: 'Connect a 1Hz square signal as clock and by turning input 1 to 1,
+    the counter will start counting down stopping on 0. On reset the value will return
+    to F.
+
+    '
+  inputs:
+  - Activation signal
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Wokwi
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: ''
+  title: Hex Countdown
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380055891603379201_dup
+  wokwi_id: 0
+yaml_version: 4

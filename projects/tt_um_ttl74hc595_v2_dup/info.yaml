@@ -1,0 +1,48 @@
+documentation:
+  author: Hirosh Dabui
+  bidirectional:
+  - q[0]
+  - q[1]
+  - q[2]
+  - q[3]
+  - q[4]
+  - q[5]
+  - q[6]
+  - q[7]
+  clock_hz: ''
+  description: The 74HC595 shift register
+  discord: fpga_kian
+  doc_link: ''
+  external_hw: You should connect 8 LEDs; perhaps a Pmod might also work.
+  how_it_works: 'https://www.onsemi.com/pdf/datasheet/mm74hc595-d.pdf
+
+    '
+  how_to_test: 'https://www.onsemi.com/pdf/datasheet/mm74hc595-d.pdf
+
+    '
+  inputs:
+  - sclrn
+  - ser
+  - rck
+  - srck
+  - G
+  language: Verilog
+  outputs:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  picture: ''
+  tag: 74hc595, shift, register
+  title: 8-Bit Shift Register with Output Latches 74HC595
+project:
+  source_files:
+  - tt_um_ttl74hc595_v2.v
+  tiles: 1x1
+  top_module: tt_um_ttl74hc595_v2_dup
+  wokwi_id: 0
+yaml_version: 4

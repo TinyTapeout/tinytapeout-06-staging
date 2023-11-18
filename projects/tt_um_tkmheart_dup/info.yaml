@@ -1,0 +1,67 @@
+documentation:
+  author: Nissan Kunju
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: The design integrates a threshold-based filtering mechanism followed
+    by peak detection on the filtered data.
+  discord: mattvenn
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'The peak detection module implements a peak detection circuit that
+    checks for the occurrence of a peak in the input data stream over three consecutive
+    clock cycles. The threshold filtering module is a threshold filter that processes
+    the input data based on the threshold and higher flag, and then passes it to the
+    peak detection module. The clock divider module divides the input clock signal
+    by 2 to generate a new clock signal clk2.
+
+    Example: setting the inputs to 00010000 will program 16384 into the compare register.
+
+    With a 10MHz clock the counter will increment ~610 times per second.
+
+    '
+  how_to_test: 'Keep the reset at 0 for two clock pulses. Change the reset to 1. Set
+    the threshold pin to 1 and send the lower four bits first. Set the higher pin
+    to 1 and send the higher four bits. Switch the threshold to 0. Alternate between
+    sending the lower and higher four bits as inputs.
+
+    '
+  inputs:
+  - compare bit 11
+  - compare bit 12
+  - compare bit 13
+  - compare bit 14
+  - compare bit 15
+  - compare bit 16
+  - compare bit 17
+  - compare bit 18
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: timer, test
+  title: Heart Rhythm Analyzer
+project:
+  source_files:
+  - clk_div2.v
+  - pk_dt.v
+  - th_flt.v
+  - tt_um_tkmheart.v
+  tiles: 1x1
+  top_module: tt_um_tkmheart_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,42 @@
+documentation:
+  author: Phillip Marlowe
+  bidirectional:
+  - msb bit of uio_oe is connected to spike_o
+  clock_hz: 10000000
+  description: Given input current, spike when threshold is reached (also assume any
+    files with the letters LFI should be LIF)
+  discord: breachdat
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'Based on input current, calculation is made using it and previous
+    membrane potential.
+
+    If current membrane potential is above pre-set threshold then spike!
+
+    '
+  how_to_test: 'After reset, input some current and see what happens. Should see an
+    increase on output and possibly a spike eventually.
+
+
+    A current input of 100 after 20 cycles should produce a spike.
+
+    '
+  inputs:
+  - clk_i is the clock
+  - current_i is the current input to the LFI neuron
+  - rst_n is for reset
+  language: Verilog
+  outputs:
+  - nu_o is the next membrane potential
+  - spike_o is the single bit to show when the neuron is firing
+  picture: ''
+  tag: timer, test
+  title: Simple Leaky Integrate and Fire (LIF) Neuron
+project:
+  source_files:
+  - tt_um_hls_lfi.v
+  - lfi.v
+  tiles: 1x1
+  top_module: tt_um_hls_lfi_dup
+  wokwi_id: 0
+yaml_version: 4

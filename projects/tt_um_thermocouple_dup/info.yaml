@@ -1,0 +1,99 @@
+documentation:
+  author: Aidan Medcalf
+  bidirectional:
+  - SCE
+  - SIN
+  - SOUT
+  - SCK
+  - ADC_SCE
+  - ADC_SOUT
+  - ADC_SIN
+  - ADC_SCK
+  clock_hz: 10000000
+  description: Converts digitized thermocouple voltage into temperature.
+  discord: pommedeterrible
+  doc_link: https://github.com/AidanMedcalf/tt05-thermocouple/blob/main/README.md
+  external_hw: Thermocouple AFE with compatible ranging, for chosen thermocouple type
+  how_it_works: 'Converts 10-bit thermocouple ADC counts into temperature by approximating
+    the transfer function with
+
+    piecewise linear segments and interpolating.
+
+
+    * Interface: SPI (16-bit word)
+
+    * ADC interface: SPI (16-bit word, 10 bits used)
+
+    * Output: Temperature in "centi-celsius", predivided by 4; 16-bit over full positive
+    range of thermocouple type
+
+    * ADC passthrough: When enabled, directly connects SPI master to ADC for configuration
+
+    * Type-J and type-K thermocouples supported
+
+
+    ADC range: 0 counts = 0 mV = 0 C, max counts (1023) = max mV = max C. Example:
+    For type-K
+
+    thermocouple, 1023 counts = 54.886 mV = 1372 C
+
+
+    Temperature output: Output is in "centi-Celsius", or hundredths of degrees C,
+    pre-divided by 4, with a granularity of 0.4C.
+
+    ```T = A / 25.0```
+
+    Where T is in degrees C, and A is the value read from SPI. For example, for a
+    type-K thermocouple
+
+    at 415.06C, A = 10376 (0x2888), and T = 415.04. Note the error of 0.02C.
+
+
+    Configuration: There are two configuration bits. Write to cfg[1:0] by issuing
+    a SPI transaction
+
+    with the high bit set (i.e. write 0x800X).
+
+    * cfg[1]: Thermocouple type: 0 = J, 1 = K
+
+    * cfg[0]: ADC passthrough enable
+
+    '
+  how_to_test: 'Requires a J or K thermocouple analog front-end with compatible ranging.
+    Wait 20 clocks after reset,
+
+    then read 16-bit temperaute from device.
+
+    '
+  inputs:
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  language: Verilog
+  outputs:
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  - unused
+  picture: ''
+  tag: test, utility, industrial, sensor, serial, thermocouple, temperature
+  title: Thermocouple-to-temperature converter (digital backend)
+project:
+  source_files:
+  - tt_um_thermocouple.v
+  - tc_calc.v
+  - spi_slave.v
+  - spi_master.v
+  tiles: 1x1
+  top_module: tt_um_thermocouple_dup
+  wokwi_id: 0
+yaml_version: 4
