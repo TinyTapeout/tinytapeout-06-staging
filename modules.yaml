@@ -34,3 +34,1294 @@ modules:
   - name: "yubex_metastability_experiment"
     x: 9
     y: 16
+    
+  # Repeat (almost) all modules to fill up the shuttle
+  - name: "factory_test"
+  - name: "loopback"
+  - name: "urish_ringosc_cnt"
+    pg_vdd: true
+  - name: "urish_simon"
+    pg_vdd: true
+  - name: "diferential_ringy"
+    width: 1
+    height: 2
+  - name: "yubex_metastability_experiment"
+  - height: 1
+    name: psychogenic_neptuneproportional
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rejunity_rule110
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: ttl74hc595_v2
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: himanshu5_prog_chipTop
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: blink
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rtfb_collatz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: algofoogle_vga_spi_rom
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: devinatkin_stopwatch
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_377426511818305537
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: sunaofurukawa_cpu_8bit
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_silife
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: vga_clock
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: frequency_counter
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rgb_mixer
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_silife_max
+    pg_vdd: null
+    width: 3
+  - height: 2
+    name: morningjava_top
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: kianV_rv32ima_uLinux_SoC
+    pg_vdd: null
+    width: 8
+  - height: 1
+    name: MichaelBell_spi_peri
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: multiplexed_clock
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gfg_development_tros
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: haozhezhu_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: top_mole99
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: GrayCounter_ariz207
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: clkdiv
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: matt_divider_test
+    pg_vdd: true
+    width: 1
+  - height: 1
+    name: tomkeddie_a
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_dffram
+    pg_vdd: true
+    width: 4
+  - height: 1
+    name: meriac_play_tune
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: vhdl_seven_segment_seconds
+    pg_vdd: true
+    width: 1
+  - height: 2
+    name: psychogenic_shaman
+    pg_vdd: null
+    width: 8
+  - height: 1
+    name: rejunity_sn76489
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gchenfc_seven_segment_gerry
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mabhari_seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_376553022662786049
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: htfab_cell_tester
+    pg_vdd: true
+    width: 1
+  - height: 1
+    name: nickjhay_processor
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380055891603379201
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: async_proc_paulschulz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: flappy_vga_cutout1
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: loopback_ericsmi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: dlmiles_tt05_i2c_bert
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379764885531576321
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380119282165535745
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: uabc_electronica_2023
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: proppy_bytebeat
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: mingkaic1_stack_machine
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wrapper_inputblackboxoutput
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: cejmu
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: no_time_for_squares_tommythorn
+    pg_vdd: null
+    width: 3
+  - height: 1
+    name: minipit_stevej
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: supertails_tetris
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: tiny_game_of_life
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: njzhu_uart
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: EventFilter
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: chatgpt_snn_mtomlin5
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: kskyou
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hls_lfi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: if
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jleugeri_ticktocktokens
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: sap_1
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: Leaky_Integrate_Fire_nfjesifb
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jmadden173_delta_modulation
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: retospect_neurochip
+    pg_vdd: null
+    width: 4
+  - height: 1
+    name: reflex_game
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: Fiona_CMU
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: alu_chip
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rjmorgan11_calculator_chip
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: synth_GyanepsaaS
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: toivoh_synth
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380197591775930369
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: joerdsonsilva_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mvm
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380005495431181313
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: diadatp_spigot_e
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mihailocode_neural_network
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: jaylennee_wta_pwm
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: LSNN
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: lif
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: topModuleKA
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409081067502593
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409086743445505
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409019830656001
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409532780455937
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408936929183745
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409369220404225
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408774591779841
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409393770716161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408823952452609
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409481852161025
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408396356749313
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408594272345089
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409488188706817
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408486941145089
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380410498092232705
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416099936681985
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408455148316673
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416361853146113
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409568391147521
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380145600224164865
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408409844584449
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409236812508161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380229599886002177
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416616536542209
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409904919056385
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hodgkin_huxley
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: 7segx4_clock_abhishek_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408784463076353
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: matrix_multiplier
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409169798008833
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380120751165092865
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: freq_hcohensa
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mv_mult_alrdelcr
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379319062779062273
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379824923824476161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379889284755158017
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: manjushettar
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rebel2_balanced_ternary_ALU
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jeffdi_seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: lif_n
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron_connorguzi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: topLevel_derekabarca
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: SNN
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rnn
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_378231665807713281
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seven_segment_seconds_ksandov4
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wta
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: adaptive_lif
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380438365946734593
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: stdp
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: thermocouple
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: asinghani_tinyscanchain_tt05
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: suhrojo
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron_neuromeme
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: BNNNeuron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hadirkhan10_lif_neuron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: uwuifier
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jkprz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: btflv_8bit_fp_adder
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gharenthi_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rejunity_ay8913
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seanvenadas
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: muncherkin_lioncage
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: ja1tye_sound_generator
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: ks_pyamnihc
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: tkmheart
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: prg
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380465686251921409
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380412382001715201
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rejunity_snn
+    pg_vdd: null
+    width: 4
+  - height: 1
+    name: carlosgs99_cro_udg
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: dinogame
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: mvm_
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: digital_clock_sellicott
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: hh
+    pg_vdd: null
+    width: 4
+  - height: 1
+    name: czlucius_alu
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380361576213660673
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380490286828784641
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380477805171811329
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: 4_bit_pipeline_multiplier
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: chip_inventor_music__6_bit_count
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mattngaw_fp8
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409528895479809
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: psychogenic_neptuneproportional
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rejunity_rule110
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: ttl74hc595_v2
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: himanshu5_prog_chipTop
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: blink
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rtfb_collatz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: algofoogle_vga_spi_rom
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: devinatkin_stopwatch
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_377426511818305537
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: sunaofurukawa_cpu_8bit
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_silife
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: vga_clock
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: frequency_counter
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rgb_mixer
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_silife_max
+    pg_vdd: null
+    width: 3
+  - height: 2
+    name: morningjava_top
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: kianV_rv32ima_uLinux_SoC
+    pg_vdd: null
+    width: 8
+  - height: 1
+    name: MichaelBell_spi_peri
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: multiplexed_clock
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gfg_development_tros
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: haozhezhu_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: top_mole99
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: GrayCounter_ariz207
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: clkdiv
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: matt_divider_test
+    pg_vdd: true
+    width: 1
+  - height: 1
+    name: tomkeddie_a
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: urish_dffram
+    pg_vdd: true
+    width: 4
+  - height: 1
+    name: meriac_play_tune
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: vhdl_seven_segment_seconds
+    pg_vdd: true
+    width: 1
+  - height: 2
+    name: psychogenic_shaman
+    pg_vdd: null
+    width: 8
+  - height: 1
+    name: rejunity_sn76489
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gchenfc_seven_segment_gerry
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mabhari_seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_376553022662786049
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: htfab_cell_tester
+    pg_vdd: true
+    width: 1
+  - height: 1
+    name: nickjhay_processor
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380055891603379201
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: async_proc_paulschulz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: flappy_vga_cutout1
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: loopback_ericsmi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: dlmiles_tt05_i2c_bert
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379764885531576321
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380119282165535745
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: uabc_electronica_2023
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: proppy_bytebeat
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: mingkaic1_stack_machine
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wrapper_inputblackboxoutput
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: cejmu
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: no_time_for_squares_tommythorn
+    pg_vdd: null
+    width: 3
+  - height: 1
+    name: minipit_stevej
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: supertails_tetris
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: tiny_game_of_life
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: njzhu_uart
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: EventFilter
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: chatgpt_snn_mtomlin5
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: kskyou
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hls_lfi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: if
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jleugeri_ticktocktokens
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: sap_1
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: Leaky_Integrate_Fire_nfjesifb
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jmadden173_delta_modulation
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: retospect_neurochip
+    pg_vdd: null
+    width: 4
+  - height: 1
+    name: reflex_game
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: Fiona_CMU
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: alu_chip
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rjmorgan11_calculator_chip
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: synth_GyanepsaaS
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: toivoh_synth
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380197591775930369
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: joerdsonsilva_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mvm
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380005495431181313
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: diadatp_spigot_e
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mihailocode_neural_network
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: jaylennee_wta_pwm
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: LSNN
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: lif
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: topModuleKA
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409081067502593
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409086743445505
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409019830656001
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409532780455937
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408936929183745
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409369220404225
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408774591779841
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409393770716161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408823952452609
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409481852161025
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408396356749313
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408594272345089
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409488188706817
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408486941145089
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380410498092232705
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416099936681985
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408455148316673
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416361853146113
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409568391147521
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380145600224164865
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408409844584449
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409236812508161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380229599886002177
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380416616536542209
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409904919056385
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hodgkin_huxley
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: 7segx4_clock_abhishek_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380408784463076353
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: matrix_multiplier
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380409169798008833
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380120751165092865
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: freq_hcohensa
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: mv_mult_alrdelcr
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379319062779062273
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379824923824476161
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_379889284755158017
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: manjushettar
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rebel2_balanced_ternary_ALU
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jeffdi_seven_segment_seconds
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: lif_n
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron_connorguzi
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: topLevel_derekabarca
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: SNN
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rnn
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_378231665807713281
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seven_segment_seconds_ksandov4
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wta
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: adaptive_lif
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380438365946734593
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: stdp
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: thermocouple
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: asinghani_tinyscanchain_tt05
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: suhrojo
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: perceptron_neuromeme
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: BNNNeuron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: hadirkhan10_lif_neuron
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: uwuifier
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: jkprz
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: btflv_8bit_fp_adder
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: gharenthi_top
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: rejunity_ay8913
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: seanvenadas
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: muncherkin_lioncage
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: ja1tye_sound_generator
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: ks_pyamnihc
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: tkmheart
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: prg
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380465686251921409
+    pg_vdd: null
+    width: 1
+  - height: 1
+    name: wokwi_380412382001715201
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: rejunity_snn
+    pg_vdd: null
+    width: 4
+  - height: 1
+    name: carlosgs99_cro_udg
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: dinogame
+    pg_vdd: null
+    width: 2
+  - height: 1
+    name: mvm_
+    pg_vdd: null
+    width: 1
+  - height: 2
+    name: digital_clock_sellicott
+    pg_vdd: null
+    width: 1
+  - name: "factory_test"
+  - name: "loopback"
+  - name: wokwi_380477805171811329
