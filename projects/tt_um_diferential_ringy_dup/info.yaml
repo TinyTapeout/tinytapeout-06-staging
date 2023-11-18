@@ -1,0 +1,51 @@
+documentation:
+  author: Emilian Miron
+  bidirectional:
+  - counter_o[0]
+  - counter_o[1]
+  - counter_o[2]
+  - counter_o[3]
+  - counter_o[4]
+  - counter_o[5]
+  - counter_o[6]
+  - counter_o[7]
+  clock_hz: 0
+  description: Factory test module
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'TODO later.
+
+    '
+  how_to_test: 'TODO this later.
+
+    '
+  inputs:
+  - sel / data_i[0]
+  - data_i[1]
+  - data_i[2]
+  - data_i[3]
+  - data_i[4]
+  - data_i[5]
+  - data_i[6]
+  - data_i[7]
+  language: Verilog
+  outputs:
+  - data_o[0] (when sel=0) / counter_o[0] (when sel=1)
+  - data_o[1] (when sel=0) / counter_o[1] (when sel=1)
+  - data_o[2] (when sel=0) / counter_o[2] (when sel=1)
+  - data_o[3] (when sel=0) / counter_o[3] (when sel=1)
+  - data_o[4] (when sel=0) / counter_o[4] (when sel=1)
+  - data_o[5] (when sel=0) / counter_o[5] (when sel=1)
+  - data_o[6] (when sel=0) / counter_o[6] (when sel=1)
+  - data_o[7] (when sel=0) / counter_o[7] (when sel=1)
+  picture: ''
+  tag: test
+  title: Ringy oscillator and fast computation
+project:
+  source_files:
+  - tt_um_diferential_ringy.v
+  tiles: 1x2
+  top_module: tt_um_diferential_ringy_dup
+  wokwi_id: 0
+yaml_version: 4

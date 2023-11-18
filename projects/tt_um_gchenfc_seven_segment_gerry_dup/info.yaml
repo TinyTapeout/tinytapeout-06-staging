@@ -1,0 +1,75 @@
+documentation:
+  author: Gerry Chen
+  bidirectional:
+  - second counter bit 0
+  - second counter bit 1
+  - second counter bit 2
+  - second counter bit 3
+  - second counter bit 4
+  - second counter bit 5
+  - second counter bit 6
+  - second counter bit 7
+  clock_hz: 10000000
+  description: Displays names on the 7-segment display one at a time.
+  discord: gchenfc
+  doc_link: https://github.com/gchenfc/Gerrys-Custom-ASIC-tt05
+  external_hw: ''
+  how_it_works: 'Uses a counter to display names on a 7-segment display.
+
+
+    A clock divider slows down the segments to 1 per second (default) as in the 7-segment
+    counter template project.  The bottom 8-bits of the counter are output on the
+    bidirectional outputs.
+
+    The bottom-5 bits of the dedicated inputs define how fast the clock divider is:
+    if non-zero, this formula is used for the wraparound value of the divider: {ui_in[4:2],
+    18''b0, ui_in[1:0]}.
+
+    Setting the input to 0bxxx00001 will therefore have clock divider of 1 (i.e. match
+    the clock) so that a manual debounced push-button can be used in place of the
+    clock.
+
+
+    Each second, one letter of a name is displayed.  The top 3-bits of the dedicated
+    inputs define which name is displayed.
+
+    '
+  how_to_test: 'After reset, a new letter should displayed each second with a 10MHz
+    input clock.
+
+    Changing the 3 MSB of the input should change which name is displayed.
+
+    Changing the 5 LSB of the input should change how quickly the letters are updated.
+
+    '
+  inputs:
+  - name bit 2
+  - name bit 1
+  - name bit 0
+  - clock divider bit 23
+  - clock divider bit 22
+  - clock divider bit 21
+  - clock divider bit 1
+  - clock divider bit 0
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: animation
+  title: 7-segment Name Display
+project:
+  source_files:
+  - tt_um_gchenfc_seven_segment_gerry.v
+  - decoder.v
+  - rollover.v
+  tiles: 1x1
+  top_module: tt_um_gchenfc_seven_segment_gerry_dup
+  wokwi_id: 0
+yaml_version: 4

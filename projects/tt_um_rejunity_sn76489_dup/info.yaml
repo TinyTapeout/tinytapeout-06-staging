@@ -1,0 +1,222 @@
+documentation:
+  author: ReJ aka Renaldas Zioma
+  bidirectional:
+  - (in)  **/WE** write enable
+  - (in)  **SEL0** 0 = clock div 16, 1 = no divider (SN94624/SN76494 mode)
+  - (in)  **SEL1** 0 = clock div 16, 1 = clock div 128
+  - (out) channel 0 (PWM)
+  - (out) channel 1 (PWM)
+  - (out) channel 2 (PWM)
+  - (out) channel 3 (PWM)
+  - (out) AUDIO OUT master (PWM)
+  clock_hz: 4000000
+  description: The SN76489 Digital Complex Sound Generator (DCSG) is a programmable
+    sound generator chip from Texas Instruments.
+  discord: rzioma
+  doc_link: README.md
+  external_hw: DAC (for ex. Digilent R2R PMOD), RC filter, amplifier, speaker
+  how_it_works: "This Verilog implementation is a replica of the classical **[SN76489](https://en.wikipedia.org/wiki/Texas_Instruments_SN76489)**\
+    \ programmable sound generator.\nWith roughly a 1400 logic gates this design fits\
+    \ on a **single tile** of the TinyTapeout.\n\n### Modern replica of a classic\n\
+    \nThe main goals of this project are:\n\n1. closely replicate the behavior and\
+    \ eventually the complete **design of the original** SN76489\n2. provide a readable\
+    \ and well documented code for educational and hardware **preservation** purposes\n\
+    3. leverage the **modern fabrication** process\n\nA significant effort was put\
+    \ into a thorough **test suite** for regression testing and validation against\
+    \ the original chip behavior.\n\n### Module parametrization\n\nThe module is parameterized\
+    \ and can match variants from the SN76489 family. The following parametrization\
+    \ options are provided:\n\n- noise tapped bits\n- tone counter and noise LFSR\
+    \ shift register size\n- variable clock divider\n\n### The future work\n\nThe\
+    \ next step is to incorporate analog elements into the design to match the original\
+    \ SN76489 - DAC for each channel and an analog OpAmp for channel summation.\n\n\
+    # Chip technical capabilities\n\n- **3 square wave** tone generators\n- **1 noise**\
+    \ generator\n- 2 types of noise: *white* and *periodic*\n- Capable to produce\
+    \ a range of waves typically from **122 Hz** to **125 kHz**, defined by **10-bit**\
+    \ registers.\n- **16** different volume levels\n\n#### Registers\n\nThe behavior\
+    \ of the SN76489 is defined with 8 \"registers\" - 4 x 4 bit volume registers,\
+    \ 3 x 10 bit tone registers and 1 x 3 bit noise configuration register.\n\n| Channel\
+    \ | Volume registers       | Tone & noise registers   |\n|---------|------------------------|--------------------------|\n\
+    | 0       | Channel #0 attenuation | Tone #0 frequency        |\n| 1       | Channel\
+    \ #1 attenuation | Tone #1 frequency        |\n| 2       | Channel #2 attenuation\
+    \ | Tone #2 frequency        |\n| 3       | Channel #3 attenuation | Noise type\
+    \ and frequency |\n\n#### Square wave tone generators \n\nSquare waves are produced\
+    \ by counting down the 10-bit counters. Each time the counter reaches the 0 it\
+    \ is reloaded with the corresponding value from the configuration register and\n\
+    the output bit of the channel is flipped producing square waves.\n\n#### Noise\
+    \ generator\n\nNoise is produced with 15-bit [Linear-feedback Shift Register (LFSR)](https://en.wikipedia.org/wiki/Linear-feedback_shift_register)\
+    \ that flips the output bit pseudo randomly.\nThe shift rate of the LFSR register\
+    \ is controller either by one of the 3 hardcoded power-of-two dividers or output\
+    \ from the channel #2 tone generator is used.\n\n#### Attenuation\n\nEach of the\
+    \ four SN76489 channels have dedicated attenuation modules. The SN76489 has 16\
+    \ steps of attenuation, each step is 2 dB and maximum possible attenuation is\
+    \ 28 dB.\nNote that the attenuation definition is the opposite of volume / loudness.\
+    \ Attenuation of 0 means maximum volume.\n\nFinally, all the 4 attenuated signals\
+    \ are summed up and are sent to the output pin of the chip.\n\n# Historical use\
+    \ of the SN76489\n\nThe SN76489 family of programmable sound generators was introduced\
+    \ by Texas Instruments in 1980. Variants of the SN76489 were used in a number\
+    \ of home computers, game consoles and arcade boards:\n\n- home computers: [TI-99/4](https://en.wikipedia.org/wiki/TI-99/4A),\
+    \ [BBC Micro](https://en.wikipedia.org/wiki/BBC_Micro), [IBM PCjr](https://en.wikipedia.org/wiki/IBM_PCjr),\
+    \ [Sega SC-3000](https://en.wikipedia.org/wiki/SG-1000#SC-3000), [Tandy 1000](https://en.wikipedia.org/wiki/Tandy_1000)\n\
+    - game consoles: [ColecoVision](https://en.wikipedia.org/wiki/ColecoVision), [Sega\
+    \ SG-1000](https://en.wikipedia.org/wiki/SG-1000), [Sega Master System](https://en.wikipedia.org/wiki/Master_System),\
+    \ [Game Gear](https://en.wikipedia.org/wiki/Game_Gear), [Neo Geo Pocket](https://en.wikipedia.org/wiki/Neo_Geo_Pocket)\
+    \ and [Sega Genesis](https://en.wikipedia.org/wiki/Sega_Genesis)\n- arcade machines\
+    \ by Sega & Konami and would usually include 2 or 4 SN76489 chips\n\nThe SN76489\
+    \ chip family competed with the similar [General Instrument AY-3-8910](https://en.wikipedia.org/wiki/General_Instrument_AY-3-8910).\n\
+    \n### The original pinout of the SN76489AN\n\n```\n             ,--._.--.\n  \
+    \    D5  -->|1    16|<-- VCC\n      D6  -->|2    15|<-- D4\n      D7  -->|3  \
+    \  14|<-- CLOCK\n   ready* <--|4    13|<-- D3\n     /WE  -->|5    12|<-- D2\n\
+    \     /ce* -->|6    11|<-- D1\nAUDIO OUT <--|7    10|<-- D0\n      GND ---|8 \
+    \    9|    not connected*\n             `-------'\n      * -- omitted from this\
+    \ Verilog implementation\n\n```\n\n# Difference from the original hardware\n\n\
+    This Verilog implementation is a completely digital and synchronous design that\
+    \ differs from the original SN76489 design which incorporated analog parts.\n\n\
+    #### Audio signal output\n\nWhile the original chip had integrated OpAmp to sum\
+    \ generated channels in analog fashion, this implementation does digital signal\
+    \ summation and digital output.\nThe module provides two alternative outputs for\
+    \ the generated audio signal:\n\n1. digital 8-bit audio output suitable for external\
+    \ Digital to Analog Converter (DAC)\n2. pseudo analog output with Pulse Width\
+    \ Modulation (PWM)\n\n#### Separate 4 channel output\n\nOutputs of all 4 channels\
+    \ are exposed along with the master output. This allows to validate and mix signals\
+    \ externally.\nIn contrast the original chip was limited to a single audio output\
+    \ pin due to the PDIP-16 package.\n\n#### No DC offset\n\nThis implementation\
+    \ produces unsigned output waveforms without DC offset.\n\n#### **/CE** and **READY**\
+    \ pins are omitted for simplicity\n\n**/CE**, chip enable control pin is omitted\
+    \ in this design. The behavior is the same as if **/CE** is tied *low* and the\
+    \ chip is considered always enabled.\n\nUnlike the original SN76489 which took\
+    \ 32 cycles to update registers, this implementation handles register writes in\
+    \ a single cycle and chip behaves as always **READY**.\n\n#### Synchronous reset\
+    \ and single phase clock\n\nThe original design employed 2 phases of the clock\
+    \ for the operation of the registers. The original chip had no reset pin and would\
+    \ wake up to a random state.\n\nTo make it easier to synthesize and test on FPGAs\
+    \ this implementation uses single clock phase and synchronous reset for registers.\n\
+    \n#### Externally configurable clock divider\n\nA configurable clock divider was\
+    \ introduced in this implementation. Clock divider can be controlled through **SEL0**\
+    \ and **SEL1** control pins and allows to select between 3 chip variants:\n\n\
+    1. the original SN76489 with the master clock internally divided by 16. This classical\
+    \ chip was intended for PAL and NTSC frequencies. However in [BBC Micro](https://en.wikipedia.org/wiki/BBC_Micro)\
+    \ 4 MHz clock was employed.\n2. SN94624/SN76494 variants without internal clock\
+    \ divider. These chips were intended for use with 250 to 500 KHz clocks.\n3. high\
+    \ frequency clock configuration for TinyTapeout, suitable for a range between\
+    \ 25 MHz and 50 Mhz. In this configuration the master clock is internally divided\
+    \ by 128.\n\n### The reverse engineered SN76489 \n\nThis implementation is based\
+    \ on the results from these reverse engineering efforts:\n\n1. [Annotations and\
+    \ analysis](https://github.com/gchiasso/76489A-analysis) of a decapped SN76489A\
+    \ chip.\n2. Reverse engineered [schematics](https://github.com/emu-russia/SEGAChips/tree/main/VDP/PSG)\
+    \ based on a decapped VDP chip from Sega Mega Drive which included a SN76496 variant.\n"
+  how_to_test: "\n### Test-suite\n\nFirst of all, run the test suite:\n\n```\n$ cd\
+    \ src\n$ make\n```\n\nThere are a number of useful functions in [test.py](https://github.com/rejunity/tt05-psg-sn76489/blob/main/src/test.py)\
+    \ that simplify communication with the sound generator.\n\nThe following example\
+    \ sets up 440Hz (A4) note at the full volume on the 1st channel and white noise\
+    \ at the half volume:\n```\nawait reset(dut)\n# Set `Channel 1` to maximum volume\n\
+    await set_volume(dut, channel='1', 15)\n# Play 440 Hz note on `Channel 1`\nawait\
+    \ set_tone(dut, channel='1', frequency=440)\n# Set `Channel 4` (noise channel)\
+    \ to half volume\nawait set_volume(dut, channel='4', 8)\n# Use on the 3 hardcoded\
+    \ divider values for noise generator\n# produces ~1 kHz white noise, if chip is\
+    \ clocked at 4 MHz\nawait set_noise(dut, white=True, divider=512)\n```      \n\
+    \n### Record music from the Verilog simulated design\n\nSimulated Verilog design\
+    \ can be fed with the stream of register values captured on a 8-bit computer in\
+    \ [Video Game Music (VGM)](https://vgmrips.net/wiki/VGM_Specification) format\
+    \ and \noutput converted to .wav file. This process is recommended for both testing\
+    \ and enjoying 8-bit era music!\n\n```\n$ make MODULE=record VGM=../music/CrazeeRider-title.bbc50hz.vgm\n\
+    $ cd ../output\n```\n\nFor a reference you can find music recorded from the chip\
+    \ simulation:\n\n- [https://www.youtube.com/watch?v=ghBGasckpSY](Crazee Rider\
+    \ BBC Micro game)\n- [https://www.youtube.com/watch?v=HXLAdA02I-w](MISSION76496\
+    \ tune for Sega Master System)\n\n\n### Connect chip to the speaker\n\nThere are\
+    \ several ways to connect this chip to the microcontroller and speaker.\n\nOne\
+    \ option is to connect off the shelf data parallel Digital to Analog Converter\
+    \ (DAC)\nfor example [Digilent R2R Pmod](https://digilent.com/reference/pmod/pmodr2r/start)\
+    \ to the output pins and\nroute the resulting analog audio to piezo speaker or\
+    \ amplifier.\n\nAnother option is to use the Pulse Width Modulated (PWM) AUDIO\
+    \ OUT pin with OpAmp+capacitor based integrator or capacitor based low-pass filter\
+    \ and a speaker:\n\n```\n  uController              SN76489\n  ,---------.   \
+    \         ,---._.---. \n  |         |    4 Mhz ->|CLK  SEL0|<-- 0\n  |    GPIOx|----------->|D0\
+    \   SEL1|<-- 0\n  |    GPIOx|----------->|D1       |\n  |    GPIOx|----------->|D2\
+    \       |\n  |    GPIOx|----------->|D3       |          C1\n  |    GPIOx|----------->|D4\
+    \       |     ,----||----.\n  |    GPIOx|----------->|D5       |     |       \
+    \   | \n  |    GPIOx|----------->|D6       |     |  OpAmp   |        Speaker \
+    \    \n  |    GPIOx|----------->|D7  AUDIO|     |   |\\     |            /|\n\
+    \  |    GPIOx|----------->|/WE  OUT |-----.---|-\\    |   C2   .--/ |\n  `---------'\
+    \            `---------'         |  }---.---||---|    |\n                    \
+    \                      ,--|+/             `--\\ |\n                          \
+    \                |  |/               |  \\|\n                                \
+    \          |                   |\n                                     GND ---\
+    \             GND ---  \n```\n\n### Summary of commands to communicate with the\
+    \ chip\n\nOnce playback schematics of the SN76489 are established, the controller\
+    \ program has to send data to the chip. SN76489 is programmed by updating its\
+    \ internal registers via data bus.\n\nBelow is a short summary of the communication\
+    \ protocol of SN76489. Please consult [SN76489 Technical Manual](https://github.com/rejunity/tt05-psg-sn76489/blob/main/docs/SN76489AN_Manual.pdf)\
+    \ for more information.\n\n\n| Command    | Description                     |\
+    \ Parameters                                    |\n|------------|---------------------------------|-----------------------------------------------|\n\
+    | `1cc0ffff` | Set tone fine frequency         | `f` - 4 low bits, `c` - channel\
+    \ #             |\n| `00ffffff` | Follow up with coarse frequency | `f` - 6 high\
+    \ bits                             |      \n| `11100bff` | Set noise type and\
+    \ frequency    | `b` - white/periodic, `f` - frequency control |\n| `1cc1aaaa`\
+    \ | Set channel attenuation         | `a` - 4 bit attenuation, `c` - channel #\
+    \      |\n\n| NF1 | NF0 | Noise frequency control       |\n|-----|-----|-------------------------------|\n\
+    | 0   |   0 | Clock divided by 512          |\n| 0   |   1 | Clock divided by\
+    \ 1024         |\n| 1   |   0 | Clock divided by 2048         |\n| 1   |   1 |\
+    \ Use channel #2 tone frequency |\n\n### Note frequency\n\nUse the following formula\
+    \ to calculate the 10-bit value for a particular frequency:\n\n```\nn = clock_frequency\
+    \ / (32 * note_frequency)\n```\n\nFor example 10-bit value that plays 440 Hz note\
+    \ on a chip clocked at 4 MHz would be:\n\n```\nn = 4000000 / (32 * 400)\nn = 284\
+    \ = h11C\n```\n\n### Data bus\n\n#### An example sequence of writes to the data\
+    \ bus.\n\nRemember to hold **/WE** LOW while writing to the data bus.\n\n```\n\
+    10001100 - Set channel #0 tone 4 low bits to hC\n00010001 -    ---//---    tone\
+    \ 6 high bits to h11\n10010000 -    ---//---    volume to 100% (attenuation =\
+    \ 0)\n\n11100100 - Set channel #3, noise type to white and divider to 512\n11111000\
+    \ -    ---//---    volume to 50% (attenuation = 8)\n```\n\n### Timing diagram\n\
+    ```\nCLK   ____      ____      ____      ____      ____      ____         \n \
+    \  __/    \\____/    \\____/    \\____/    \\____/    \\____/    \\___ ...\n \
+    \    |        |         |         |         |         |\n     |        |     \
+    \    |         |         |         |\n\n/WE _       __        __        __   \
+    \     __        _______\n     \\_____/  \\______/  \\______/  \\______/  \\______/\
+    \   *\n                                                       ^\nD0..D7_______\
+    \  ________  ________  ________  ________  |\n   _/10001100\\/00010001\\/10010000\\\
+    /11100100\\/11111000\\_|______\n      chan#0    chan#0    chan#0    chan#3   \
+    \ chan#3   |\n    tone=h??C   =h11C    atten=0    div=16    atten=8  |\n     \
+    \ h011C = 440 Hz              /16 = ~1 Khz         |\n                       \
+    \          white noise           |\n                                         \
+    \              |\n                                                 noise restarts\n\
+    \                                            after /WE goes high and\n       \
+    \                              there was a write to noise register\n\n```\n###\
+    \ Externally configurable clock divider\n\n| SEL1 | SEL0 | Description       \
+    \                 | Clock frequency|\n|------|------|------------------------------------|----------------|\n\
+    | 0    |    0 | SN76489 mode, clock divided by 16  | 3.5 .. 4.2 MHz |\n| 1   \
+    \ |    1 |           -----//-----             | 3.5 .. 4.2 MHz |\n| 0    |   \
+    \ 1 | SN76494 mode, no clock divider     | 250 .. 500 kHZ |\n| 1    |    0 | New\
+    \ mode for TT05, clock div. 128  |  25 .. 50  MHz |\n"
+  inputs:
+  - D0 data bus
+  - D1 data bus
+  - D2 data bus
+  - D3 data bus
+  - D4 data bus
+  - D5 data bus
+  - D6 data bus
+  - D7 data bus
+  language: Verilog
+  outputs:
+  - digital audio LSB
+  - digital audio
+  - digital audio
+  - digital audio
+  - digital audio
+  - digital audio
+  - digital audio
+  - digital audio MSB
+  picture: docs/SN76489_chip_pinout_and_block_diagram.jpg
+  tag: psg, music, sound
+  title: Classic 8-bit era Programmable Sound Generator SN76489
+project:
+  source_files:
+  - attenuation.v
+  - tone.v
+  - noise.v
+  - signal_edge.v
+  - pwm.v
+  - tt_um_rejunity_sn76489.v
+  tiles: 1x1
+  top_module: tt_um_rejunity_sn76489_dup
+  wokwi_id: 0
+yaml_version: 4

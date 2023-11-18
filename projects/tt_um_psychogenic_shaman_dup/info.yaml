@@ -1,0 +1,94 @@
+documentation:
+  author: Pat Deegan, psychogenic.com
+  bidirectional:
+  - OUTPUT, result_ready
+  - OUTPUT, begin processing data debug
+  - INPUT,  parallel loading enable
+  - INPUT,  result_next
+  - OUTPUT, busy
+  - OUTPUT, processing data block debug
+  - INPUT,  start new digest
+  - INPUT,  clockin_data
+  clock_hz: 10000000
+  description: Generate a SHA256 digest for data of arbitrary length
+  discord: psychogenictech
+  doc_link: README.md
+  external_hw: An MCU or something to feed in the bytes and receive the results
+  how_it_works: "This implements the SHA-256 digest to create hashes of the data you\
+    \ feed in.  It is a naive, mostly unoptimized, implementation\nof the algorithm\
+    \ (though you can interleave data input while it's processing, using parallel\
+    \ mode, if you respect busy).\n\nData is fed into the system in 64 byte blocks.\
+    \  The hash is available after each 64 byte block has been input (allowing for\n\
+    some cycles to finish processing).\n\nThe process is to:\n\n  - toggle start,\
+    \ to reset the digest\n  - put data byte on the databyte input (the \"in\" port)\n\
+    \  - wait until busy is de-asserted (if required)\n  - clock the clockin_data\
+    \ pin\n\nAfter each complete block, the digest will become available after some\
+    \ clocks.  In short if\n\n  - busy is not asserted; and\n  - result_ready goes\
+    \ high\n\nThe first hash byte will be available on the out port.  To get the next\
+    \ bytes, clock result_next and read the port.\n\nParallel mode allows you to start\
+    \ feeding in more input data while the system is still processing the previous\
+    \ \nblock.  You need to pay attention to and respect \"busy\", here, or things\
+    \ will get badly munged.  \nAlso, in parallel mode, you need to hold the clockin_data\
+    \ for an extra cycle when you bring it high.\n\nPinout looks a little weird but\
+    \ it is hoped this will be a nice match for the PMOD arrangement on the demo boards.\n\
+    \nNOTES\n\nIt does NOT massage the input data into suitable blocks. Messages need\
+    \ to be appended with an 0x80 byte, padded \nsuch that the entire thing, along\
+    \ with an 8 byte suffix containing the length (big end), is a multiple of 512\
+    \ \nbits (64 bytes). You can see this in action in the message_to_blocks() function,\
+    \ in test.py.\n\nI don't think it's super fast but, in parallel mode, I *think*\
+    \ simulation indicates it takes on the order of 8.3 microseconds\nper byte using\
+    \ a 1MHz system clock.  So, if we could feed this say a 50MHz clock, we'd get\
+    \ down to 166 ns/byte.  \nThat's only on the order of 6 megabytes per second,\
+    \ I dunno maybe 100x slower than my laptop, but my \nlaptop doesn't run on a 50MHz\
+    \ clock and whatevs: should do the job if it holds in realy life.  All this \n\
+    is when processing longer messages, to swamp out the minor overhead of setup etc.\n\
+    \nWhen loading input data, if using parallel mode, hold clockin_data for an extra\
+    \ system clock.  So\n\n  - data byte on inputs\n  - clockin_data HIGH\n  - hold\
+    \ one system clock\n  - clockin_data LOW\n  - ... loop for next byte\n"
+  how_to_test: "Might be good to run the cocotb test to get VCDs if you really want\
+    \ to see it in action.  But we want to play with hardware!\nSo... There will be\
+    \ a python script in the repository to convert any content into the expected 512\
+    \ bit blocks of bytes\npadded and everything to make the system happy.\n\nWith\
+    \ that list of bytes in hand, this should work nicely:\n\n  1) hold n_reset low\
+    \ for a few clock cycles\n  2) bring n_reset high, and give it a few cycles\n\
+    \  3) start a new message digest my clocking start (bring high for one cycle,\
+    \ then low)\n  4) for each block in your message\n      - while \"busy\" is HIGH,\
+    \ wait a bit and check again\n      - for each byte in that block\n        - put\
+    \ the byte on in port (dedicated input pins)\n        - while \"busy\" is HIGH,\
+    \ wait a bit and check again\n        - bring clockin_data HIGH\n        - if\
+    \ using parallel mode, hold for an extra clock cycle \n        - bring clockin_data\
+    \ LOW\n        \nCheck and wait until \"busy\" is LOW and \"result_ready\" goes\
+    \ HIGH.\nYour first result byte will already be present on the output port.\n\
+    Grab it and stash it.\nThen, for the next 31 bytes:\n  bring result_next HIGH\n\
+    \  hold it there for one clock cycle\n  bring result_next LOW\n  grab and stash\
+    \ the byte on output pins\n\nIf the hash is going to be, say \"90fc0a268f8b81b...\"\
+    , they'll be present in that order\n0x90, then 0xfc, then 0x0a etc\n"
+  inputs:
+  - data_input bit 0
+  - data_input bit 1
+  - data_input bit 2
+  - data_input bit 3
+  - data_input bit 4
+  - data_input bit 5
+  - data_input bit 6
+  - data_input bit 7
+  language: Amaranth
+  outputs:
+  - result_byte bit 0
+  - result_byte bit 1
+  - result_byte bit 2
+  - result_byte bit 3
+  - result_byte bit 4
+  - result_byte bit 5
+  - result_byte bit 6
+  - result_byte bit 7
+  picture: img/shaman-logo.jpg
+  tag: hash, sha, sha256, digest
+  title: 'Shaman: SHA-256 hasher'
+project:
+  source_files:
+  - tt_um_psychogenic_shaman.v
+  tiles: 8x2
+  top_module: tt_um_psychogenic_shaman_dup
+  wokwi_id: 0
+yaml_version: 4

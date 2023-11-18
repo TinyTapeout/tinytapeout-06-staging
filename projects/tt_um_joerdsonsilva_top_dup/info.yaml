@@ -1,0 +1,98 @@
+documentation:
+  author: Joerdson Silva
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 50000000
+  description: Performs digital modulation and demodulation in amplitude, frequency
+    and phase schemes.
+  discord: joerdson
+  doc_link: README.md
+  external_hw: oscilloscope or signal analyzer
+  how_it_works: "The multimode modem uses a clock signal to generate digitized signals\
+    \ over time, in sinusoidal format (carrier wave).\nFrom this digitized sinusoid,\
+    \ the modulation process is applied using different methods for each scheme, implemented\
+    \ \nthrough specific internal blocks to perform modulations ASK (switching the\
+    \ amplitude of the sine wave), FSK (switching \nthe frequency of the sine wave\
+    \ through a digital signal modulator) and PSK (phase coding). In the demodulation\
+    \ stage, \nthese three modulation schemes are analyzed to recover the original\
+    \ information, manifesting as '0' or '1' values that \nreflect the data signal\
+    \ already restored after the process.\n"
+  how_to_test: "The multimode modem has the following inputs and outputs:\n\n   -\
+    \ Input  - clock (1 bit)\n   - Input  - reset (1 bit)\n   - Input  - sel (2 bits)\n\
+    \   - Output - mod_out (7 bits)\n   - Output - demod_out (1 bit)\n \nApply a \u201C\
+    clock\u201D of 40~50 MHz. Then, apply a \u201Creset\u201D signal of logic level\
+    \ \u201C1\u201D to synchronize the modem system and then make the \n\u201Creset\u201D\
+    \ signal a logic level \u201C0\u201D. After that, select the type of modulation\
+    \ to be used, as per the sequence below:\n\n   - Sel = \"01\" <= ASK modulation\
+    \ and demodulation\n\n   - Sel = \"10\" <= FSK modulation and demodulation\n\n\
+    \   - Sel = \"11\" <= PSK modulation and demodulation\n\nAfter selecting the modulation\
+    \ type, the modulated signal is expressed at the \u201Cmod_out\u201D output, and\
+    \ the demodulated signal at the \n\u201Cdemod_out\u201D output.\n"
+  inputs:
+  - clock
+  - reset
+  - sel_0
+  - sel_1
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - mod_out_0
+  - mod_out_1
+  - mod_out_2
+  - mod_out_3
+  - mod_out_4
+  - mod_out_5
+  - mod_out_6
+  - demod_out
+  picture: ''
+  tag: clock, modem, signal generator
+  title: Multimode Modem
+project:
+  source_files:
+  - tt_um_joerdsonsilva_top.v
+  - modem.v
+  - bask.v
+  - mult1.v
+  - clk_rdg1.v
+  - rdg1.v
+  - ffd1.v
+  - wave11.v
+  - bfsk.v
+  - clk_rdg2.v
+  - clk_25MHz.v
+  - wave12.v
+  - wave22.v
+  - rdg2.v
+  - ffd2.v
+  - freq_select.v
+  - bpsk.v
+  - clk_rdg3.v
+  - rdg3.v
+  - ffd3.v
+  - wave13.v
+  - wave23.v
+  - control_0.v
+  - demod_bask.v
+  - demod_bfsk.v
+  - wave122.v
+  - mult2.v
+  - integrator2.v
+  - demod_bpsk.v
+  - wave133.v
+  - mult3.v
+  - integrator3.v
+  - control_1.v
+  tiles: 1x2
+  top_module: tt_um_joerdsonsilva_top_dup
+  wokwi_id: 0
+yaml_version: 4

@@ -1,0 +1,61 @@
+documentation:
+  author: Toivo Henningsson
+  bidirectional:
+  - write address bit 0
+  - write address bit 1
+  - write address bit 2
+  - write address bit 3
+  - unused
+  - unused
+  - PWM output
+  - write strobe
+  clock_hz: 50000000
+  description: One synth voice with two oscillators and a 2nd order filter
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: 'TODO: Describe oscillators and filter, PWM
+
+    '
+  how_to_test: "The synth is controlled by writing to its configuration registers:\n\
+    \  - Keep the write strobe low when not writing\n  - Set the 4 bit write address,\
+    \ and an 8 bit data value\n  - While keeping the address and data stable, bring\
+    \ the write strobe high and then low again\n      - The write address and data\
+    \ are sampled at 2-10 cycles after the rising edge of the write strobe\n\nThe\
+    \ output comes in two forms:\n  - As a Pulse Width Modulated (PWM) signal.\n \
+    \ - As an 8 bit value on the 8 output pins, that can be reconstructed using a\
+    \ resistor ladder.\n\nThe PWM signal should be simpler to use, but be sure reduce\
+    \ the voltage with a resistive divider or similar\nbefore connecting it to an\
+    \ audio device.\n**Note:Make sure that you know what you are doing when connecting\
+    \ an audio device to the output.\nDon't apply more than 1 V between the terminals\
+    \ of an audio plug this connected to line in.\n5 V direct from the chip might\
+    \ damage your audio device.**\n\nTODO: Register descriptions\n"
+  inputs:
+  - write data bit 0
+  - write data bit 1
+  - write data bit 2
+  - write data bit 3
+  - write data bit 4
+  - write data bit 5
+  - write data bit 6
+  - write data bit 7
+  language: Verilog
+  outputs:
+  - sample bit 0
+  - sample bit 1
+  - sample bit 2
+  - sample bit 3
+  - sample bit 4
+  - sample bit 5
+  - sample bit 6
+  - sample bit 7
+  picture: ''
+  tag: ''
+  title: Analog emulation monosynth
+project:
+  source_files:
+  - tt_um_toivoh_synth.v
+  tiles: 1x2
+  top_module: tt_um_toivoh_synth_dup
+  wokwi_id: 0
+yaml_version: 4

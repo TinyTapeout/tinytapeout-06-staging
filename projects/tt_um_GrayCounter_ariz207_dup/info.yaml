@@ -1,0 +1,51 @@
+documentation:
+  author: EconomIC Engineers
+  bidirectional:
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  clock_hz: 0
+  description: Using a clock, a counter will rise using gray code binary values
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: '4 bit Syncronous Gray Code Counter
+
+    '
+  how_to_test: "Connect the Input to a clock and Output to LEDs to demonstrate binary\
+    \ values changing \n"
+  inputs:
+  - CLK
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  - none
+  language: Verilog
+  outputs:
+  - LED a
+  - LED b
+  - LED c
+  - LED d
+  - none
+  - none
+  - none
+  - none
+  picture: ''
+  tag: Counter, GrayCode
+  title: 4 bit Sync Gray Code Counter
+project:
+  source_files:
+  - Gray_Counter.v
+  tiles: 1x1
+  top_module: tt_um_GrayCounter_ariz207_dup
+  wokwi_id: 0
+yaml_version: 4

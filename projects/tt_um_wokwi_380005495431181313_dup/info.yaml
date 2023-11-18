@@ -1,0 +1,112 @@
+documentation:
+  author: Hendrik
+  bidirectional:
+  - CFG0
+  - CFG1
+  - CFG2
+  - CFG3
+  - CFG4
+  - TimerScaleConfig
+  - WarningTimeConfig
+  - TimeoutConfig
+  clock_hz: 32768
+  description: Controller for a camping van water pump with multiple tap switches
+    and timer
+  discord: henner0207
+  doc_link: https://github.com/fahek/water-pump-controller-tto5/blob/main/README.md
+  external_hw: 32768Hz clock (does not need to be prcise, actually), power on reset,
+    controlled water supply system (tap switches, pump), optionally LEDs and Buzzer
+    for controller states
+  how_it_works: 'The water pump controller is intended to replace the wiring based
+    water pump system of typical camping vans with a bathroom
+
+    and a kitchen and addresses some problems these systems can have.
+
+
+    In such a system, water taps are usually equipped with switches that signal the
+    need for water as soon as the tap is slightly
+
+    opened so that a pump can be activated to pressurize the pipes.
+
+
+    The controller has six inputs so that each tap (e.g sink in the kitchen, sink
+    in the bathroom, toilet flushing, shower in
+
+    bathroom, external shower) can use a dedicated input. It has another input for
+    a high pressure switch that
+
+    would turn off the pump if the pressure rises when all taps are actually closed.
+
+
+    The main feature is a timer that can give an reminder using a buzzer when the
+    water is running for an untypically long period
+
+    and automatically switch off the pump at some point as well. When the switch off
+    time was reached the buzzer signal can help to
+
+    indicate which switch is still active.
+
+    '
+  how_to_test: "For testing the circuit, the outputs (including the pump output) can\
+    \ be connected to LEDs or as in the test board\nto a 7-segment display. In the\
+    \ test board the pump output corresponds to the top segment. The inputs can be\
+    \ connected\nto DIP switches. The clock should be set to 32768 Hz (2^15 Hz). The\
+    \ reset signal should provide a power-on reset and\noptionally a manual reset\
+    \ that might be handy for testing. In the minimal setup, the last three bidirectional\
+    \ I/O pins should be\nconnected via separate resistors to GND. Connecting them\
+    \ directly to GND should be okay as well for a quick test. The pins can be\noutputs\
+    \ that should only be driven to low in this case, but do not connect them directly\
+    \ to VCC. The other I/O pins can be left\nopen or connected to GND to avoid floating\
+    \ pins. The connection to GND can be done directly or via pull-down resistors\
+    \ to plan\nahead for more tests with additional circuitry.\n\nThe first test is\
+    \ about enabling the pump while not making use of the timer:\n\n- Keep the input\
+    \ 6 (DIP 7) low to disable the timer\n- Keep the input 7 (high pressure switch)\
+    \ low \n- Set any combination of tap switches (inputs 0 - 5) high\n- The pump\
+    \ output (top segment) should be on\n- The pump LED and ActiveNormal LED (right\
+    \ hand segments) should be on\n- With all tap switches off all outputs should\
+    \ be off as well\n\nThe second test is to verify the high pressure switch:\n\n\
+    - Set input 7 (the high pressure switch) high\n- Set any combination of tap switches\
+    \ high\n- Select any state for the timer enable pin (input 6)\n- The pump output\
+    \ should be off\n- The pump LED, ActiveLEDs and buzzer can be on, depending on\
+    \ the state of the controller\n\nA simple test for the timer with default values:\n\
+    \n- Set input 6 high to enable the timer feature\n- Keep input 7 low to see the\
+    \ pump output\n- Set any combination of tap switches (input 0 - 5) high\n- Wait\n\
+    - After 128s, the LEDs outputs should change from ActiveNormal to ActiveWarning\n\
+    \  (bottom right to bottom on the 7-segment display) and the RunLong LED (top\
+    \ left\n  for 7-segment display) should be activated\n- At the same time the buzzer\
+    \ should be activated every two seconds. LEDs would blink\n  dim (center segment).\n\
+    - After another 32s, the pump and pump LED should be turned off and the other\
+    \ LEDs should\n  go from ActiveWarning to ActiveHalted (bottom to bottom left\
+    \ segment).\n- The buzzer should emit a sequence corresponding to the first active\
+    \ tap input every 16\n  seconds. Again for LEDs that would be a dim blinking sequence\
+    \ every 16s.\n- Set all tap switches to low\n- All outputs should be off\n- Activate\
+    \ any tap switch \n- Pump (and related LEDs) should be on again, buzzer should\
+    \ be off\n\nTesting the configuration feature requires additional external circuits.\
+    \ Please refer to\nthe testing section of the README of the github project\n(https://github.com/fahek/water-pump-controller-tto5#more-advanced-tests).\n"
+  inputs:
+  - TapA
+  - TapB
+  - TapC
+  - TapD
+  - TapE
+  - TapF
+  - EnableTimeout
+  - PressureHigh
+  language: Wokwi
+  outputs:
+  - Pump
+  - PumpEnabled
+  - ActiveNormal
+  - ActiveWarning
+  - ActiveHalted
+  - RunLong
+  - Buzzer
+  - BuzzerHaltedOnly
+  picture: ./drawings/wpc_system_sketch.png
+  tag: utility, timer
+  title: Water Pump Controller
+project:
+  tiles: 1x1
+  top_module: tt_um_wokwi_380005495431181313_dup
+  wokwi_id: 0
+yaml_version: 4

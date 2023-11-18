@@ -1,0 +1,52 @@
+documentation:
+  author: Morteza Biglari-Abhari
+  bidirectional:
+  - Load bit 0 (uio_in[0])
+  - Start bit 1 (uio_in[1])
+  - Tens or Ones select bit 3 (uio_in[3])
+  - Time_Out uio_out[7]
+  clock_hz: 10000000
+  description: Count up to the specified value (between 01 to 99), one second at a
+    time. Time_Out will be '1' when reaches the expected value
+  discord: ''
+  doc_link: ''
+  external_hw: ''
+  how_it_works: "This is a two-digits timer, which can count from 00 to 99 in seconds.\
+    \ The time to stop counting is \ngiven through 8 input switches (ui_in) as two\
+    \ BCD numbers (which can be from 00 to 99). This number \nis loaded into an internal\
+    \ register when input Load is '1'. Then when input Start is '1' the counting\n\
+    begins. The timer stops when it reaches the specified count number and then output\
+    \ Time_Out will become '1'. \nSeconds (either Ones or Tens) is displayed on 7-Seg\
+    \ display depending on uio_in[3].\n"
+  how_to_test: 'After reset, when Start and Load inputs are activated the counter
+    should increase by one every second with a 10MHz input clock.
+
+    Experiment by changing the inputs to count different number of seconds
+
+    '
+  inputs:
+  - Timeout (in Seconds) bits 7 to 0
+  language: Verilog
+  outputs:
+  - segment a
+  - segment b
+  - segment c
+  - segment d
+  - segment e
+  - segment f
+  - segment g
+  - dot
+  picture: ''
+  tag: seconds timer
+  title: Simple_Timer-MBA
+project:
+  source_files:
+  - tt_um_seven_segment_seconds.v
+  - decoder.v
+  - BCD_Counter.v
+  - Clock_Divider.v
+  - Seconds_Timer.v
+  tiles: 1x1
+  top_module: tt_um_mabhari_seven_segment_seconds_dup
+  wokwi_id: 0
+yaml_version: 4
