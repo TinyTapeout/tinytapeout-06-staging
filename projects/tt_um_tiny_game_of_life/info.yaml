@@ -1,0 +1,102 @@
+--- 
+# Tiny Tapeout project information
+project:
+  wokwi_id:    0        # If using wokwi, set this to your project's ID
+
+# If using an HDL, set wokwi_id as 0 and uncomment and list your source files here. 
+# Source files must be in ./src and you must list each source file separately
+  source_files:        
+    - project.sv
+  top_module:  "tt_um_tiny_game_of_life"      # Put the name of your top module here, must start with "tt_um_". Make it unique by including your github username
+
+
+# How many tiles your design occupies? A single tile is about 167x108 uM.
+  tiles: "1x2"    # Valid values: 1x1, 1x2, 2x2, 3x2, 4x2 or 8x2
+
+# Keep a track of the submission yaml
+yaml_version: 4
+
+# As everyone will have access to all designs, try to make it easy for someone new to your design to know what
+# it does and how to operate it. This info will be automatically collected and used to make a datasheet for the chip.
+#
+# Here is a great example: https://github.com/davidsiaw/tt02-davidsiaw-stackcalc/blob/38c5647f83aad2aec675d566aa3d67b98f0aac81/info.yaml
+documentation: 
+  author:       "Petros Emmanouilidis"      # Your name
+  title:        "Tiny Game of Life"      # Project title
+  language:     "Verilog" # other examples include Verilog, Amaranth, VHDL, etc
+  description:  "Simulates cellular automaton Conway's Game of Life on an 8x8 grid using shift registers."      # Short description of what your project does
+
+# Longer description of how the project works. You can use standard markdown format.
+  how_it_works: |
+
+      The circuit employs 2 distinct shift registers to run the simulation: A Load Shift Register stores the initial state of the grid based on the user's input. 
+      Once the simulation commences, all cells in the Load Shift Register are updated and copied in parallel inside the Update Shift Register. This update step 
+      occurs within a single clock cycle. After updating the grid, the circuit outputs each new value sequentially before proceeding to the next state of the game.
+      The output stage of the game lasts 64 clock cycles (one clock cycle for each cell in the grid) and involves pushing the updated cells from the Update Shift Register
+      back to the Load Shift Register. Once all updated values have trickled into the Load Shift Register, the circuit returns to its update phase, restarting the cycle of 
+      update and output. After the simulation commences, the circuit will oscillate between updating and outputting indefinitely (unless reset) without any further user input.
+
+      Inputting Values:
+
+      Before starting the game, the user can sequentially load the grid's values into the circuit, one cell at a time. Cells are organized in row major order and 
+      the circuit can, at any time, hold 64 cells. If the user attempts to load more than 64 values, the oldest ones are pushed off the grid. The value of any inputted
+      cell is specified using the 0th input line ui_in[0]. Loading a single cell into the circuit takes 1 clock cycle, meaning that inputting the entire table into the 
+      register takes 64 clock cycles. 
+
+      Starting the Game:
+
+      To commence the simulation, the user must assert the 1st input line ui_in[1]. Upon doing so, the circuit stops receiving further user inputs and starts playing the
+      game. The value present in ui_in[0] while ui_in[1] is asserted is not loaded into the table.
+
+      Output Encoding:
+
+      During the output phase, the circuit drives all 8 output lines. The 0th bit uo_out[0] encodes the value of the currently displayed cell. Bits 1 to 8, 
+      uo_out[7:1] encode the location of the cell in the table. The location can take values 1 to 64 inclusive and is in row major order (meaning that 1 corresponds
+      to the cell in the top left corner and 64 corresponds to the cell in the bottom right corner). During update, output bits uo_out[7:1] are set to 0 and the 
+      data output at uo_out[0] is invalid. During input, all output lines are invalid.
+
+# Instructions on how someone could test your project, include things like what buttons do what and how to set the clock if needed
+  how_to_test:  |
+      Load values through ui_in[0] (one cell value per clock cycle) and start the game by asserting ui_in[1]. Make sure that ui_in[1] starts out
+      disasserted; otherwise, the game will commence without any values loaded into the table, and the circuit will be inaccessible unless reset.
+      
+      In general, pray it works.
+
+# A description of what the inputs do (e.g. red button, SPI CLK, SPI MOSI, etc).
+  inputs:               
+    - Data Input Line
+    - Start Game
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+# A description of what the outputs do (e.g. status LED, SPI MISO, etc)
+  outputs:
+    - Data Output Line
+    - 0th bit of cell location
+    - 1st bit of cell location
+    - 2nd bit of cell location
+    - 3rd bit of cell location
+    - 4th bit of cell location
+    - 5th bit of cell location
+    - 6th bit of cell location
+# A description of what the bidirectional I/O pins do (e.g. I2C SDA, I2C SCL, etc)
+  bidirectional:
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+    - none
+
+# The following fields are optional
+  tag:          ""      # comma separated list of tags: test, encryption, experiment, clock, animation, utility, industrial, pwm, fpga, alu, microprocessor, risc, riscv, sensor, signal generator, fft, filter, music, bcd, sound, serial, timer, random number generator, calculator, decoder, counter, puzzle, multiplier, game, oscillator,
+  external_hw:  ""      # Describe any external hardware needed
+  discord:      "petrosem"      # Your discord handle, used for communication and automatically assigning tapeout role after a submission
+  doc_link:     ""      # URL to longer form documentation, eg the README.md in your repository
+  clock_hz:     0       # Clock frequency in Hz (if required)
+  picture:      ""      # relative path to a picture in your repository (must be 512kb or less)
