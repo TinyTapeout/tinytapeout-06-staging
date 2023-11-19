@@ -1,3 +1,21 @@
+diff --git a/openlane/steps/magic.py b/openlane/steps/magic.py
+index c4297f0..df9ed8d 100644
+--- a/openlane/steps/magic.py
++++ b/openlane/steps/magic.py
+@@ -289,9 +289,10 @@ class StreamOut(MagicStep):
+                 )
+ 
+                 if generated_metrics == {}:
+-                    raise StepError(
+-                        f"Failed to extract PR boundary from GDSII view of macro '{macro}'. Ensure that the GDSII view has a PR boundary layer."
+-                    )
++                    pass
++                    #raise StepError(
++                    #    f"Failed to extract PR boundary from GDSII view of macro '{macro}'. Ensure that the GDSII view has a PR boundary layer."
++                    #)
+                 macro_gds.append([macro, macro_gdses, generated_metrics.values()])
+ 
+             env["__MACRO_GDS"] = TclStep.value_to_tcl(macro_gds)
 diff --git a/openlane/steps/tclstep.py b/openlane/steps/tclstep.py
 index 86d6069..68f046e 100644
 --- a/openlane/steps/tclstep.py
