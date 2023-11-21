@@ -1,9 +1,10 @@
 {
-  "app": "Tiny Tapeout tt05 562ebd4f",
-  "repo": "https://github.com/TinyTapeout/tt05-factory-test",
-  "commit": "901461a50ef7aeda53262e030f4511c072ff5bf8",
-  "workflow_url": "https://github.com/TinyTapeout/tt05-factory-test/actions/runs/6500162402",
-  "sort_id": 1700321067877,
-  "openlane_version": "OpenLane 7e5a2e9fb274c0a100b4859a927adce7089455ff",
+  "app": "Tiny Tapeout tt06 ed28c2f3",
+  "repo": "https://github.com/TinyTapeout/tt06-factory-test",
+  "commit": "c090e69f20ef45ad1919845457a8aa819e78d51a",
+  "workflow_url": "https://github.com/TinyTapeout/tt06-factory-test/actions/runs/6946109023",
+  "sort_id": 1700581947329,
+  "openlane_version": "OpenLane 1e9efe9d0c4f8044d917d022a05ee1706651ed48",
+  "pdk_version": "open_pdks dd7771c384ed36b91a25e9f8b314355fc26561be",
   "power_gate": false
 }
