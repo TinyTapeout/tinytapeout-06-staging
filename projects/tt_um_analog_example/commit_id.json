@@ -1,0 +1,8 @@
+{
+  "app": "custom_gds action",
+  "repo": "https://github.com/urish/tt06-analog-test",
+  "commit": "2b8ec24929d7bfd872b91746db1eefffa1c22a8b",
+  "workflow_url": "https://github.com/urish/tt06-analog-test/actions/runs/7716467155",
+  "sort_id": 1706631427505,
+  "analog": true
+}
