@@ -1,0 +1,9 @@
+{
+  "app": "Tiny Tapeout tt06 e8c5040d",
+  "repo": "https://github.com/mattvenn/tt06-logic-puzzle",
+  "commit": "2c0f867b1ec77a357f774f0f862fb9b0cd890aa7",
+  "workflow_url": "https://github.com/mattvenn/tt06-logic-puzzle/actions/runs/7741848505",
+  "sort_id": 1706797652583,
+  "openlane_version": "OpenLane f691c8c0712ca6c6645e3fd548985b3cbcf08c78",
+  "pdk_version": "open_pdks e0f692f46654d6c7c99fc70a0c94a080dab53571"
+}
