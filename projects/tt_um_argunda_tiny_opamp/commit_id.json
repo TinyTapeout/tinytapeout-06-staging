@@ -4,5 +4,6 @@
   "commit": "4bc88058d9d288bd62f9736ba89499ddcb94c378",
   "workflow_url": "https://github.com/argunda/tt06-tiny-opamp/actions/runs/8667271119",
   "sort_id": 1712955303841,
-  "analog": true
+  "analog": true,
+  "skip": true
 }
