@@ -1,0 +1,107 @@
+name: extra_be_checks
+
+on:
+  workflow_dispatch:
+
+jobs:
+  extra_be_checks:
+    env:
+      PDK_ROOT: /home/runner/pdk
+      PDK: sky130A
+      LVS_ROOT: ${{ github.workspace }}/extra_be_checks
+      UPRJ_ROOT: ${{ github.workspace }}/efabless
+      # Tool versions
+      CVC_VERSION: 'v1.1.4'
+      MAGIC_VERSION: '8.3.413'
+      NETGEN_VERSION: '1.5.255'
+      KLAYOUT_VERSION: '0.29.0'
+
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout project repo
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Load OpenLane environment variables
+        run: cat .github/config/openlane.txt | tee -a $GITHUB_ENV
+
+      - name: Checkout extra_be_checks repo
+        uses: actions/checkout@v4
+        with:
+          repository: d-m-bailey/extra_be_checks
+          ref: tapeout
+          path: extra_be_checks
+
+      - name: Install Sky130 PDK
+        uses: TinyTapeout/volare-action@v2
+        with:
+          pdk_name: sky130
+          pdk_version: ${{ env.SKY130_PDK_VERSION }}
+          pdk_root: ${{ env.PDK_ROOT }}
+
+      - name: Install CVC
+        run: |
+          sudo apt-get install -y autopoint gettext
+          git clone --depth 1 -b $CVC_VERSION https://github.com/d-m-bailey/cvc
+          cd cvc
+          autoreconf -vif
+          ./configure --disable-nls
+          make -j4
+          sudo make install
+        
+      - name: Install Magic
+        run: |
+          sudo apt-get install -y m4 python3 libx11-dev tcl-dev tk-dev libcairo2-dev mesa-common-dev libglu1-mesa-dev csh
+          git clone --depth 1 -b "$MAGIC_VERSION" https://github.com/RTimothyEdwards/magic
+          cd magic
+          ./configure
+          make -j4
+          sudo make install
+      
+      - name: Install netgen
+        run: |
+          git clone --depth 1 -b "$NETGEN_VERSION" https://github.com/RTimothyEdwards/netgen
+          cd netgen
+          ./configure
+          make -j4
+          sudo make install
+
+      - name: Install klayout
+        run: |
+          curl -o /tmp/klayout.deb https://www.klayout.org/downloads/Ubuntu-22/klayout_$KLAYOUT_VERSION-1_amd64.deb
+          sudo apt-get install -y /tmp/klayout.deb
+
+      - name: Download efabless_submission artifact (run id = ${{ github.event.workflow_run.id }})
+        uses: dawidd6/action-download-artifact@v3
+        id: download_artifact
+        with:
+          workflow: gds.yaml
+          run_id: ${{ github.event.workflow_run.id }}
+          workflow_conclusion: success
+          name: efabless_submission
+          path: efabless
+
+      - name: Download macros artifact (run id = ${{ github.event.workflow_run.id }})
+        uses: dawidd6/action-download-artifact@v3
+        with:
+          workflow: gds.yaml
+          run_id: ${{ fromJSON(steps.download_artifact.outputs.artifacts)[0].workflow_run.id }}
+          workflow_conclusion: success
+          name: macros
+          path: macros
+      
+      - name: Copy macros
+        run: |
+          cp macros/ol2/tt_top/verilog/tt_*.v $UPRJ_ROOT/verilog/gl
+
+      - name: Run extra_be_checks (run id = ${{ fromJSON(steps.download_artifact.outputs.artifacts)[0].workflow_run.id }})
+        run: |
+          $LVS_ROOT/run_be_checks efabless/lvs/openframe_project_wrapper/lvs_config.json        
+
+      - name: Upload precheck results
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: extra_be_checks_results
+          path: openframe_project_wrapper
